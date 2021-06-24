@@ -9,14 +9,23 @@ import src.Painel.PainelBatalha;
 public class Controle implements IControle {
     // Atributos
     private IHeroi heroi;
+    private int fase;
 
     // IControle
     public void setHeroi(IHeroi heroi) {
         this.heroi = heroi;
     }
-
+    
+    public void setFase(int fase) {
+        this.fase = fase;
+    }
+    
     public boolean getVivo() {
         return heroi.getVivo();
+    }
+
+    public Controle() {
+        fase = 1;
     }
 
     public void jogada(int x, int y) {
@@ -25,7 +34,7 @@ public class Controle implements IControle {
         switch (movimento) {
             case 'i':
                 ICombate inimigo = (ICombate)heroi.getInimigoNaPosicao(x, y);
-                new PainelBatalha(heroi, inimigo);
+                new PainelBatalha(heroi, inimigo, fase);
 
                 if (heroi.getVivo()) {
                     // heroi.pegarItem(); ??????????????????????????????????????

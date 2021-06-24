@@ -1,5 +1,6 @@
 package src.Painel;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -22,41 +23,34 @@ public class PainelBatalha extends JFrame implements ActionListener {
     private JPanel paineis[] = new JPanel[cores.length];
     private int bordas[][] = {{125, 125, 100, 100}, {25, 225, 100, 100}, {125, 325, 100, 100}, {225, 225, 100, 100}};
     private JButton botoes[] = new JButton[cores.length];
-    private JLabel pontuacao, titulo;
+    private JLabel fundo;
 
     private Random random;
     private ArrayList<Integer> sequencia;
-    private int fase, atual;
+    private int fase, atual, tempo;
     private String mensagem;
 
     private ICombate heroi, inimigo;
 
     // Construtor
-    public PainelBatalha(ICombate heroi, ICombate inimigo) {
+    public PainelBatalha(ICombate heroi, ICombate inimigo, int fase) {
         super("Batalha!");
-        fase = 1;
         atual = 0;
         random = new Random();
 
+        if (fase > 0 && fase < 7) {
+            tempo = fase * 125;
+        } else {
+            tempo = 125;
+        }
+        
+        this.fase = fase;
         this.heroi = heroi;
         this.inimigo = inimigo;
 
-        // TODO Trocar abaixo por algo mais bonito... uma imagem de escudo com espadas cruzadas pra dizer que é uma batalha?
-        // Se for trocar, tem que remover todas as atualizações pra pontuação mais pra baixo
-
-        pontuacao = new JLabel("1", JLabel.CENTER);
-        pontuacao.setBounds(125, 225, 100, 100);
-        pontuacao.setFont(pontuacao.getFont().deriveFont(30F));
-        add(pontuacao);
-
-        // TODO Trocar abaixo por algo mais bonito... imagem do herói e do inimigo e coraçõezinhos com a vida deles?
-
-        titulo = new JLabel("Batalha!", JLabel.CENTER);
-        titulo.setBounds(100, 25, 150, 75);
-        titulo.setFont(pontuacao.getFont().deriveFont(30F));
-        add(titulo);
-
-
+        // TODO Colocar o endereço da imagem da batalha 
+        fundo = new JLabel(new ImageIcon(""));
+        
         for (int i = 0; i < botoes.length; i ++) {
             paineis[i] = new JPanel();
             paineis[i].setBackground(cores[i].darker());
@@ -65,10 +59,11 @@ public class PainelBatalha extends JFrame implements ActionListener {
             botoes[i].add(paineis[i]);
             botoes[i].setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
             botoes[i].addActionListener(this);
-            add(botoes[i]);
+            fundo.add(botoes[i]);
         }
-
-        setSize(350, 475);
+        
+        add(fundo);
+        pack();
         setResizable(false);
         setLayout(null);
         setLocationRelativeTo(null);
@@ -86,16 +81,16 @@ public class PainelBatalha extends JFrame implements ActionListener {
     // Inicia uma nova batalha
     private void novaBatalha() {       
         sequencia = new ArrayList<Integer>();
-        sequencia.add(random.nextInt(botoes.length));
-        
-        fase = 1;
-        atual = 0;
+
+        for (int i = 0; i < fase; i ++) {
+            sequencia.add(random.nextInt(botoes.length));
+        }
 
         try {
             Thread.sleep(500);
         } catch (InterruptedException exception) {
             exception.printStackTrace();
-            System.exit(ERROR);
+            System.exit(1);
         }
 
         apresentar();
@@ -115,10 +110,10 @@ public class PainelBatalha extends JFrame implements ActionListener {
             paineis[botao].paintAll(paineis[botao].getGraphics());
 
             try {
-                Thread.sleep(1000);
+                Thread.sleep(1250 - tempo);
             } catch (InterruptedException exception) {
                 exception.printStackTrace();
-                System.exit(ERROR);
+                System.exit(1);
             }
 
             paineis[botao].setBackground(cores[botao].darker());
@@ -128,7 +123,7 @@ public class PainelBatalha extends JFrame implements ActionListener {
                 Thread.sleep(250);
             } catch (InterruptedException exception) {
                 exception.printStackTrace();
-                System.exit(ERROR);
+                System.exit(1);
             }
         }
 
@@ -148,7 +143,7 @@ public class PainelBatalha extends JFrame implements ActionListener {
                 Thread.sleep(500);
             } catch (InterruptedException exception) {
                 exception.printStackTrace();
-                System.exit(ERROR);
+                System.exit(1);
             }
 
             paineis[botao].setBackground(cores[botao].darker());
@@ -162,14 +157,13 @@ public class PainelBatalha extends JFrame implements ActionListener {
 
                 fase ++;
                 atual = 0;
-                pontuacao.setText("" + fase);
                 sequencia.add(random.nextInt(botoes.length));
 
                 try {
                     Thread.sleep(500);
                 } catch (InterruptedException exception) {
                     exception.printStackTrace();
-                    System.exit(ERROR);
+                    System.exit(1);
                 }
 
                 if (!inimigo.getVivo()) {
@@ -200,6 +194,6 @@ public class PainelBatalha extends JFrame implements ActionListener {
 
     // TODO Remover abaixo depois de testar =D
     public static void main(String[] args) {
-        new PainelBatalha(new Heroi(0, 0, new Mapa()), new Inimigo(0, 0, 300, 100, 0));
+        new PainelBatalha(new Heroi(0, 0, new Mapa()), new Inimigo(0, 0, 300, 100, 0), 6);
     }
 }
