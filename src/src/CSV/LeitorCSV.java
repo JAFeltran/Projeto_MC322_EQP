@@ -1,0 +1,33 @@
+package src.CSV;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
+public class LeitorCSV {
+    public static String[] lerCSV(String caminhoCSV) {
+        if (caminhoCSV != null) {
+            try {
+                BufferedReader arquivo = new BufferedReader(new FileReader(caminhoCSV));
+                String linha = arquivo.readLine();
+                String conteudo[] = null;
+                
+                if (linha != null) {
+                    conteudo = linha.split(",");
+                }
+
+                arquivo.close();
+                return conteudo;
+            } catch (IOException e) {
+                e.printStackTrace();
+                String mensagem = "Não foi possível ler o arquivo '" + caminhoCSV + "'.\nPor favor, tente novamente.";
+                JOptionPane.showMessageDialog(new JFrame(), mensagem, "Erro", JOptionPane.ERROR_MESSAGE);
+                System.exit(1);
+            }
+        }
+        return null;
+    }
+}
