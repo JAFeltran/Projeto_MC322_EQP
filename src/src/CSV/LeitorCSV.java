@@ -8,15 +8,18 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 public class LeitorCSV {
-    public static String[] lerCSV(String caminhoCSV) {
+    public static String[][] lerCSV(String caminhoCSV) {
         if (caminhoCSV != null) {
             try {
                 BufferedReader arquivo = new BufferedReader(new FileReader(caminhoCSV));
                 String linha = arquivo.readLine();
-                String conteudo[] = null;
+                String conteudo[][] = new String[7][];
+                int i = 0;
                 
-                if (linha != null) {
-                    conteudo = linha.split(",");
+                while (linha != null) {
+                    conteudo[i] = linha.split(",");
+                    arquivo.readLine();
+                    i ++;
                 }
 
                 arquivo.close();
