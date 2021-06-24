@@ -13,13 +13,13 @@ public class Heroi extends Ator implements IHeroi {
 
     // Construtor
     public Heroi(int x, int y, IMapa mapa) {
-        super(x, y, 'h', false, false);
+        super(x, y, 'h');
         vida = 300;
         this.mapa = mapa;
         inventario = new IItem[4];
 
-        inventario[0] = new Item(100, "Desarmado");
-        inventario[1] = new Item(100, "Pelado");
+        inventario[0] = new Item(50, "Desarmado");
+        inventario[1] = new Item(0, "Pelado");
         inventario[2] = new Item(0, "Nada");
         inventario[3] = null;
     }

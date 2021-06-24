@@ -7,7 +7,7 @@ public class Inimigo extends Ator implements ICombate {
 
     // Construtor
     public Inimigo(int x, int y, int vida, int ataque, int defesa) {
-        super(x, y, 'i', false, false);
+        super(x, y, 'i');
         this.vida = vida;
         this.ataque = ataque;
         this.defesa = defesa;
@@ -24,8 +24,16 @@ public class Inimigo extends Ator implements ICombate {
 
     public int causarDano() {
         Random random = new Random();
-        int acerto = random.nextInt(2);
-        return (acerto * ataque);
+        int acerto = random.nextInt(20);
+
+        if (acerto < 10) {
+            return 0;
+        }
+        else if (acerto == 19) {
+            return (int) (1.5 * ataque);
+        }
+
+        return ataque;
     }
 
     public void receberDano(int dano) {
