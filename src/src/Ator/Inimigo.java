@@ -7,7 +7,7 @@ public class Inimigo extends Ator implements ICombate {
 
     // Construtor
     public Inimigo(int x, int y, int vida, int ataque, int defesa) {
-        super(x, y, 'i');
+        super(x, y, 'i', false, false);
         this.vida = vida;
         this.ataque = ataque;
         this.defesa = defesa;

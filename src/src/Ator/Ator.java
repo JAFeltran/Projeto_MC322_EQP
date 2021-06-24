@@ -4,12 +4,16 @@ public class Ator implements IAtor {
     // Atributos
     private int x, y;
     private char tipo;
+    private boolean ehVazio;
+    private boolean ehSaida;
 
     // Construtor
-    public Ator(int x, int y, char tipo) {
+    public Ator(int x, int y, char tipo, boolean ehVazio, boolean ehSaida) {
         this.x = x;
         this.y = y;
         this.tipo = tipo;
+        this.ehVazio = ehVazio;
+        this.ehSaida = ehSaida;
     }
 
     // IAtor
