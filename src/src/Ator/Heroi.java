@@ -6,17 +6,17 @@ import src.Item.*;
 public class Heroi extends Ator implements IHeroi {
     // Atributos
     private IItem inventario[];
-    // inventario tem 5 itens, cada um representando um dos atributos (na seguinte ordem):
+    // inventario tem 4 itens, cada um representando um dos atributos (na seguinte ordem):
     // ataque, defesa, visao, chave.
     private int vida;
-    private int vida_max;
+    private int vidaMax;
     private IMapa mapa;
 
     // Construtor
     public Heroi(int x, int y, IMapa mapa) {
         super(x, y, 'h');
         vida = 300;
-        vida_max = 300;
+        vidaMax = 300;
         this.mapa = mapa;
         inventario = new IItem[4];
 
@@ -34,6 +34,14 @@ public class Heroi extends Ator implements IHeroi {
 
     public void removerInimigo(int x, int y) {
         mapa.setAtorNaPosicao(null, x, y);
+    }
+
+    public int getVida() {
+        return vida;
+    }
+
+    public int getVidaMax() {
+        return vidaMax;
     }
 
     public boolean getVivo() {
