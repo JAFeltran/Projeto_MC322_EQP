@@ -9,12 +9,14 @@ public class Heroi extends Ator implements IHeroi {
     // inventario tem 5 itens, cada um representando um dos atributos (na seguinte ordem):
     // ataque, defesa, visao, chave.
     private int vida;
+    private int vida_max;
     private IMapa mapa;
 
     // Construtor
     public Heroi(int x, int y, IMapa mapa) {
         super(x, y, 'h');
         vida = 300;
+        vida_max = 300;
         this.mapa = mapa;
         inventario = new IItem[4];
 
@@ -67,6 +69,14 @@ public class Heroi extends Ator implements IHeroi {
     public void receberDano(int dano) {
         if (dano > 0) {
             vida -= dano - inventario[1].getValor();
+        }
+
+        if (dano > inventario[1].getValor())
+        {
+            vida -= (dano - inventario[1].getValor());
+        }
+        else {
+            vida -= 10;
         }
     }
 }

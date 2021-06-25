@@ -11,21 +11,13 @@ public class Chefe extends Inimigo {
     // ICombate
     public int causarDano() {
         Random random = new Random();
-        int acerto = random.nextInt(20);
+        int acerto = random.nextInt(4);
 
-        if (acerto < 5) {
+        if (acerto == 0) {
             return 0;
         }
-        else if (acerto == 19){
-            return (int) (1.5 * ataque);
-        }
-
-        return ataque;
-    }
-
-    public void receberDano(int dano) {
-        if (dano > 0) {
-            vida -= dano - defesa;
+        else {
+            return ataque;
         }
     }
 }
