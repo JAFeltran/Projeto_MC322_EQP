@@ -5,6 +5,8 @@ import src.Mapa.*;
 
 import static src.CSV.LeitorCSV.lerCSV;
 
+import java.util.Random;
+
 public class Montador {
     // Atributos
     private int fase;
@@ -75,11 +77,55 @@ public class Montador {
         heroi = new Heroi(xHeroi, yHeroi, mapa);
     }
 
+    public int[] modificarHabilidades(int vida, int ataque, int defesa) {
+        int habilidades[] = new int[3];
+        Random random = new Random();
+
+        habilidades[0] = vida;
+        habilidades[1] = ataque;
+        habilidades[2] = defesa;
+
+        if (random.nextInt(2) == 0) {
+            habilidades[1] += habilidades[1] * 0.2;
+            habilidades[2] -= habilidades[2] * 0.2;
+        }
+        else {
+            habilidades[1] -= habilidades[1] * 0.2;
+            habilidades[2] += habilidades[2] * 0.2;
+        }
+
+        return habilidades;
+    }
+
     public void gerarInimigo(int x, int y) {
-        int vida, ataque, defesa;
+        int habilidades[];
         IAtor inimigo;
 
-        inimigo = new Inimigo(x, y, vida, ataque, defesa);
-        mapa.setAtorNaPosicao();
+        switch (fase) {
+            case 1:
+                habilidades = modificarHabilidades(100, 90, 0);
+                break;
+            case 2:
+                habilidades = modificarHabilidades(120, 170, 40);
+                break;
+            case 3:
+                habilidades = modificarHabilidades(160, 275, 95);
+                break;
+            case 4:
+                habilidades = modificarHabilidades(225, 400, 150);
+                break;
+            case 5:
+                habilidades = modificarHabilidades(300, 600, 225);
+                break;
+            case 6:
+                habilidades = modificarHabilidades(370, 850, 325);
+                break;
+            default:
+                throw new IllegalStateException("Valor de fase inesperado: " + fase);
+        }
+
+        inimigo = new Inimigo(x, y, habilidades[0], habilidades[1], habilidades[2]);
+
+        mapa.setAtorNaPosicao(inimigo, x, y);
     }
 }
