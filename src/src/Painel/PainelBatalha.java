@@ -1,11 +1,6 @@
 package src.Painel;
 
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 import java.awt.Color;
 import java.awt.Cursor;
@@ -48,8 +43,7 @@ public class PainelBatalha extends JFrame implements ActionListener {
         this.heroi = heroi;
         this.inimigo = inimigo;
 
-        // TODO Colocar o endereço da imagem da batalha 
-        fundo = new JLabel(new ImageIcon(""));
+        fundo = new JLabel(new ImageIcon("assets/PainelBatalha/fundo.png"));
         
         for (int i = 0; i < botoes.length; i ++) {
             paineis[i] = new JPanel();
@@ -70,11 +64,9 @@ public class PainelBatalha extends JFrame implements ActionListener {
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-        mensagem = "O Herói encontrou um inimigo!";
-        mensagem.concat("\nClique nas cores na ordem em que elas acenderem para atacá-lo.");
-        mensagem.concat("\nCuidado! Se você errar, ele poderá contra-atacar o Herói.");
+        mensagem = "O Herói encontrou um inimigo!\nClique nas cores na ordem em que elas acenderem para atacá-lo.\nCuidado! Se você errar, ele poderá contra-atacar o Herói.";
         
-        JOptionPane.showMessageDialog(new JFrame(), mensagem, "Instruções", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(new JFrame(), mensagem, "Instruções", JOptionPane.INFORMATION_MESSAGE, new ImageIcon("assets/PainelBatalha/info.png"));
         novaBatalha();
     }
 
@@ -132,6 +124,7 @@ public class PainelBatalha extends JFrame implements ActionListener {
         }
     }
 
+    // ActionListener
     public void actionPerformed(ActionEvent e) {
         int botao = sequencia.get(atual);
         
@@ -153,7 +146,7 @@ public class PainelBatalha extends JFrame implements ActionListener {
             if (atual == fase) {
                 inimigo.receberDano(heroi.causarDano());
                 mensagem = "O Herói acertou um golpe no inimigo!";
-                JOptionPane.showMessageDialog(new JFrame(), mensagem, "Acerto!", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(new JFrame(), mensagem, "Acerto!", JOptionPane.INFORMATION_MESSAGE, new ImageIcon("assets/PainelBatalha/espada.png"));
 
                 fase ++;
                 atual = 0;
@@ -168,7 +161,7 @@ public class PainelBatalha extends JFrame implements ActionListener {
 
                 if (!inimigo.getVivo()) {
                     mensagem = "O Herói conseguiu derrotar o inimigo!";
-                    JOptionPane.showMessageDialog(new JFrame(), mensagem, "Vitória!", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(new JFrame(), mensagem, "Vitória!", JOptionPane.INFORMATION_MESSAGE, new ImageIcon("assets/PainelBatalha/caveira.png"));
                     this.dispose();
                     return;
                 }
@@ -178,11 +171,11 @@ public class PainelBatalha extends JFrame implements ActionListener {
         } else {
             heroi.receberDano(inimigo.causarDano());
             mensagem = "O inimigo se defendeu e contra-atacou o Herói!";
-            JOptionPane.showMessageDialog(new JFrame(), mensagem, "Contra-ataque", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(new JFrame(), mensagem, "Contra-ataque", JOptionPane.INFORMATION_MESSAGE, new ImageIcon("assets/PainelBatalha/escudo.png"));
             
             if (!heroi.getVivo()) {
                 mensagem = "As forças do mal são fortes demais e derrotaram o Herói...";
-                JOptionPane.showMessageDialog(new JFrame(), mensagem, "Derrota!", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(new JFrame(), mensagem, "Derrota!", JOptionPane.INFORMATION_MESSAGE, new ImageIcon("assets/PainelBatalha/derrota.png"));
                 this.dispose();
                 return;
             }
@@ -194,6 +187,6 @@ public class PainelBatalha extends JFrame implements ActionListener {
 
     // TODO Remover abaixo depois de testar =D
     public static void main(String[] args) {
-        new PainelBatalha(new Heroi(0, 0, new Mapa()), new Inimigo(0, 0, 300, 100, 0), 6);
+        new PainelBatalha(new Heroi(0, 0, new Mapa()), new Inimigo(0, 0, 300, 100, 0), 1);
     }
 }
