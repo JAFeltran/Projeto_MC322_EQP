@@ -1,5 +1,7 @@
 package src.Ator;
 
+import src.Mapa.IMapa;
+
 import java.util.Random;
 
 public class Chefe extends Inimigo {

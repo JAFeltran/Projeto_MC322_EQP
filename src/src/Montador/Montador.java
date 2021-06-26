@@ -42,6 +42,7 @@ public class Montador {
     public void criarFase() {
         String conteudoCSV[][] = lerCSV(caminhoCSV);
         int xHeroi = 0, yHeroi = 0;
+        int xChefe = 7, yChefe = 7;
         IAtor ator;
 
         for (int i = 0; i < 7; i++) {
@@ -59,7 +60,9 @@ public class Montador {
                         gerarInimigo(i, j);
                         break;
                     case "c":
-                        //tem q definir os valores do chefe
+                        xChefe = i;
+                        yChefe = j;
+                        //gerarChefe(xChefe, yChefe);
                         break;
                     case "s":
                         ator = new Ator(i, j, 's');
@@ -74,6 +77,52 @@ public class Montador {
         }
 
         heroi = new Heroi(xHeroi, yHeroi, mapa);
+
+        definirTerritorioChefe(xChefe, yChefe);
+    }
+
+    public void definirTerritorioChefe(int x, int y) {
+        IAtor ator;
+        
+        if (x + 1 < 7) {
+            ator = mapa.getAtorNaPosicao(x + 1, y);
+            ator.setTipo('t');
+
+            if (x + 2 < 7) {
+                ator = mapa.getAtorNaPosicao(x + 2, y);
+                ator.setTipo('t');
+            }
+        }
+
+        if (x - 1 >= 0) {
+            ator = mapa.getAtorNaPosicao(x - 1, y);
+            ator.setTipo('t');
+
+            if (x - 2 >= 0) {
+                ator = mapa.getAtorNaPosicao(x - 2, y);
+                ator.setTipo('t');
+            }
+        }
+
+        if (y + 1 < 7) {
+            ator = mapa.getAtorNaPosicao(x, y + 1);
+            ator.setTipo('t');
+
+            if (y + 2 < 7) {
+                ator = mapa.getAtorNaPosicao(x, y + 2);
+                ator.setTipo('t');
+            }
+        }
+
+        if (y - 1 >= 0) {
+            ator = mapa.getAtorNaPosicao(x, y - 1);
+            ator.setTipo('t');
+
+            if (y - 2 >= 0) {
+                ator = mapa.getAtorNaPosicao(x, y - 2);
+                ator.setTipo('t');
+            }
+        }
     }
 
     // IMontaAtor
