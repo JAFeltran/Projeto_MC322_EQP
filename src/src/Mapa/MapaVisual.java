@@ -19,7 +19,11 @@ public class MapaVisual {
 
     // Setters
     public void setAtorVisualNaPosicao(int x, int y, char tipo, int fase) {
-        icones[x][y].setIcone(tipo, fase);
+        if (x < 7 && x >= 0) {
+            if (y < 7 && y >= 0) {
+                icones[x][y].setIcone(tipo, fase);
+            }
+        }
     }
 
     // Getters

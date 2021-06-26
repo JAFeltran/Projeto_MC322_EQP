@@ -15,7 +15,11 @@ public class Mapa implements IMapa {
 
     // IMapaPropriedades
     public void setAtorNaPosicao(IAtor ator, int x, int y) {
-        mapa[x][y] = ator;
+        if (x < 7 && x >= 0) {
+            if (y < 7 && y >= 0) {
+                mapa[x][y] = ator;
+            }
+        }
     }
 
     public IAtor getAtorNaPosicao(int x, int y) {
