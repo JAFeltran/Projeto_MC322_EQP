@@ -79,7 +79,9 @@ public class Controle implements IControle {
     private void mover(int x, int y) {
         int xAtual = heroi.getX();
         int yAtual = heroi.getY();
-        heroi.mover(x, y);
+
+        heroi.mover(x, y, fase);
+
         // TODO atualizar quais quadrados são visíveis e quais não são mais
     }
 
@@ -112,7 +114,7 @@ public class Controle implements IControle {
             case 't':
                 JOptionPane.showMessageDialog(new JFrame(), "O Herói sente que um grande mal se aproxima...", "Aviso", JOptionPane.WARNING_MESSAGE, new ImageIcon("assets/Controle/chefe.png"));
                 break;
-            case 'v':
+            case '_':
                 mover(x, y);
                 break;
         }

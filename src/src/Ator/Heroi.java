@@ -57,17 +57,14 @@ public class Heroi extends Ator implements IHeroi {
     }
 
     public char verificarMovimento(int x, int y) {
-        if (mapa.getAtorNaPosicao(x, y) == null) {
-            return 'v';
-        }
-        else {
-            return mapa.getAtorNaPosicao(x, y).getTipo();
-        }
+        return mapa.getAtorNaPosicao(x, y).getTipo();
     }
 
-    public void mover(int x, int y) {
+    public void mover(int x, int y, int fase) {
         super.setX(x);
         super.setY(y);
+
+        mapa.ajustarVisibilidade(inventario[2].getValor(), x, y, fase);
     }
 
     public int causarDano() {
@@ -75,12 +72,7 @@ public class Heroi extends Ator implements IHeroi {
     }
 
     public void receberDano(int dano) {
-        if (dano > 0) {
-            vida -= dano - inventario[1].getValor();
-        }
-
-        if (dano > inventario[1].getValor())
-        {
+        if (dano > inventario[1].getValor()) {
             vida -= (dano - inventario[1].getValor());
         }
         else {

@@ -9,5 +9,5 @@ public interface IAcao {
 
     // Movimento
     public char verificarMovimento(int x, int y);
-    public void mover(int x, int y);
+    public void mover(int x, int y, int fase);
 }

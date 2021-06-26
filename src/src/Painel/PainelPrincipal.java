@@ -86,6 +86,7 @@ public class PainelPrincipal extends JFrame implements IPainelPrincipal {
                 // Quando for mover o herói, o controle pode, além de alterar a posição do herói, calcular quais casas são visíveis e mandar o controle deixar essas visíveis e deixar as outras que não são mais visíveis, invisíveis.
                 // Fazendo isso, não tem como o jogador se mover pra algum lugar não acessível, mas a visibilidade do herói teria que ser sempre maior ou igual a 1, se não não daria pra mover at all.
                 // Qualquer coisa a gente pode, em vez de usar o setVisible, só mudar a imagem do label do botão pra uma imagem de desconhecido ou a imagem dele mesmo.
+
                 //botoes[n].setVisible(false);
             }
         }
