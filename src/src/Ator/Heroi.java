@@ -33,7 +33,7 @@ public class Heroi extends Ator implements IHeroi {
     }
 
     public void removerInimigo(int x, int y) {
-        mapa.setAtorNaPosicao(null, x, y);
+        mapa.setAtorNaPosicao(new Ator(x, y, '_'), x, y);
     }
 
     public int getVida() {

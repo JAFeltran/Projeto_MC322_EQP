@@ -21,12 +21,11 @@ public class Montador {
         mapa = new Mapa();
     }
 
-    // Setters
+    // IMontadorPropriedades
     public void setFase(int fase) {
         this.fase = fase;
     }
 
-    // Getters
     public int getFase() {
         return fase;
     }
@@ -39,7 +38,7 @@ public class Montador {
         return mapa;
     }
 
-    // Outras funcoes
+    // IMontaMapa
     public void criarFase() {
         String conteudoCSV[][] = lerCSV(caminhoCSV);
         int xHeroi = 0, yHeroi = 0;
@@ -77,6 +76,7 @@ public class Montador {
         heroi = new Heroi(xHeroi, yHeroi, mapa);
     }
 
+    // IMontaAtor
     public int[] modificarHabilidades(int vida, int ataque, int defesa) {
         int habilidades[] = new int[3];
         Random random = new Random();
