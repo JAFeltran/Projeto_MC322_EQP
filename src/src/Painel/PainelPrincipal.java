@@ -38,13 +38,11 @@ public class PainelPrincipal extends JFrame implements IPainelPrincipal {
     private void criarTela1() {
         fundo = new JLabel(new ImageIcon("assets/PainelPrincipal/tela1.png"));
         labelJogar = new JLabel(new ImageIcon("assets/PainelPrincipal/jogar.png"));
-        labelJogar.setBounds(238, 458, 240, 80);
-        labelJogar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         jogar1 = new JButton();
+        jogar1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         jogar1.setBounds(238, 458, 240, 80);
         jogar1.addActionListener(this);
         jogar1.add(labelJogar);
-        fundo.add(labelJogar);
         fundo.add(jogar1);
         add(fundo);
     }
@@ -53,21 +51,18 @@ public class PainelPrincipal extends JFrame implements IPainelPrincipal {
     private void criarTela2() {
         fundo.setIcon(new ImageIcon("assets/PainelPrincipal/tela2.png"));
         fundo.remove(jogar1);
-        labelJogar.setBounds(238, 558, 240, 80);
         jogar2 = new JButton();
+        jogar2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         jogar2.setBounds(238, 558, 240, 80);
         jogar2.addActionListener(this); 
         jogar2.add(labelJogar);
-        fundo.add(labelJogar);
         fundo.add(jogar2);
     }
 
     // Cria a tela com o mapa e os botões de movimento
     private void criarMapa() {
         fundo.setIcon(new ImageIcon("assets/PainelPrincipal/mapa.png"));
-        fundo.remove(jogar2);
-        fundo.remove(labelJogar);
-        
+        fundo.remove(jogar2);        
         botoes = new JButton[49];
 
         String mensagem = "Clique em um quadrado visível para mover o Herói para lá.\nAo mover o Herói para o local onde está um Inimigo, uma batalha épica se iniciará!";
@@ -80,6 +75,7 @@ public class PainelPrincipal extends JFrame implements IPainelPrincipal {
                 botoes[n].addActionListener(this);
                 botoes[n].setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
                 botoes[n].setBounds(42 + (j * 90), 48 + (i * 90), 80, 80);
+                
                 // TODO trocar abaixo pelas imagens corretas e setar tudo invisível a não ser perto do herói... talvez tenha que mudar o construtor pra receber a posição do herói
                 JLabel label = new JLabel("" + n, JLabel.CENTER);
                 botoes[n].add(label);
