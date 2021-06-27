@@ -20,9 +20,9 @@ public class Heroi extends Ator implements IHeroi {
         this.mapa = mapa;
         inventario = new IItem[4];
 
-        inventario[0] = new Item(50, 1, "Desarmado");
-        inventario[1] = new Item(0, 2, "Pelado");
-        inventario[2] = new Item(0, 3, "Nada");
+        inventario[0] = new Item(50, 0, "Desarmado");
+        inventario[1] = new Item(0, 1, "Pelado");
+        inventario[2] = new Item(0, 2, "Nada");
         inventario[3] = null;
     }
 
