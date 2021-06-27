@@ -5,7 +5,7 @@ import src.Controle.*;
 import src.Montador.*;
 import src.Painel.*;
 
-public class AppHeroiDasHeras {
+public class AppHeroiDasEeras {
 
     public static void main(String[] args) {
         IPainelPrincipal painel;
@@ -17,7 +17,7 @@ public class AppHeroiDasHeras {
         painel = new PainelPrincipal(controle);
 
         for (fase = 1; fase < 7; fase++) {
-            montador = new Montador(fase, ("assets/CSVs/Fase" + fase + ".csv"));
+            montador = new Montador(fase, ("data/CSVs/Fase" + fase + ".csv"));
 
             montador.criarFase();
             controle.setFase(fase);
