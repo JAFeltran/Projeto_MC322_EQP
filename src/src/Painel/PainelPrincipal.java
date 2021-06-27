@@ -8,7 +8,7 @@ import java.awt.event.*;
 
 import src.Controle.*;
 
-public class PainelPrincipal extends JFrame implements ActionListener {
+public class PainelPrincipal extends JFrame implements IPainelPrincipal {
     // Atributos
     private JLabel fundo, labelJogar, vida;
     private JButton jogar1, jogar2;

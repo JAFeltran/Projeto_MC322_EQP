@@ -82,45 +82,11 @@ public class Montador implements IMontador {
     }
 
     public void definirTerritorioChefe(int x, int y) {
-        IAtor ator;
-
-        if (x + 1 < 7) {
-            ator = mapa.getAtorNaPosicao(x + 1, y);
-            ator.setTipo('t');
-
-            if (x + 2 < 7) {
-                ator = mapa.getAtorNaPosicao(x + 2, y);
-                ator.setTipo('t');
-            }
-        }
-
-        if (x - 1 >= 0) {
-            ator = mapa.getAtorNaPosicao(x - 1, y);
-            ator.setTipo('t');
-
-            if (x - 2 >= 0) {
-                ator = mapa.getAtorNaPosicao(x - 2, y);
-                ator.setTipo('t');
-            }
-        }
-
-        if (y + 1 < 7) {
-            ator = mapa.getAtorNaPosicao(x, y + 1);
-            ator.setTipo('t');
-
-            if (y + 2 < 7) {
-                ator = mapa.getAtorNaPosicao(x, y + 2);
-                ator.setTipo('t');
-            }
-        }
-
-        if (y - 1 >= 0) {
-            ator = mapa.getAtorNaPosicao(x, y - 1);
-            ator.setTipo('t');
-
-            if (y - 2 >= 0) {
-                ator = mapa.getAtorNaPosicao(x, y - 2);
-                ator.setTipo('t');
+        for (int i = x - 1; i <= x + 1; i++) {
+            for (int j = y - 1; j <= y + 1; j++) {
+                if ((i >= 0 && i < 7) && (j >= 0 && j < 7)) {
+                    mapa.getAtorNaPosicao(i, j).setTipo('t');
+                }
             }
         }
     }

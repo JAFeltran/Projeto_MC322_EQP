@@ -13,12 +13,12 @@ public class LeitorCSV {
             try {
                 BufferedReader arquivo = new BufferedReader(new FileReader(caminhoCSV));
                 String linha = arquivo.readLine();
-                String conteudo[][] = new String[7][];
+                String conteudo[][] = new String[7][7];
                 int i = 0;
                 
                 while (linha != null) {
                     conteudo[i] = linha.split(",");
-                    arquivo.readLine();
+                    linha = arquivo.readLine();
                     i ++;
                 }
 

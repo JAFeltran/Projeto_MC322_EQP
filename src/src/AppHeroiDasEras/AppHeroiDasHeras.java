@@ -3,18 +3,21 @@ package src.AppHeroiDasEras;
 import src.Ator.*;
 import src.Controle.*;
 import src.Montador.*;
+import src.Painel.*;
 
 public class AppHeroiDasHeras {
 
     public static void main(String[] args) {
+        IPainelPrincipal painel;
         IControle controle = new Controle();
         int fase;
         IMontador montador;
         IHeroi heroi = null;
-        int xHeroi, yHeroi;
+
+        painel = new PainelPrincipal(controle);
 
         for (fase = 1; fase < 7; fase++) {
-            montador = new Montador(fase, ("Assets/CSV/Fase" + fase));
+            montador = new Montador(fase, ("assets/CSVs/Fase" + fase + ".csv"));
 
             montador.criarFase();
             controle.setFase(fase);
@@ -23,10 +26,8 @@ public class AppHeroiDasHeras {
                 controle.setHeroi(montador.getHeroi());
             }
             else if (heroi != null) {
-                xHeroi = montador.getHeroi().getX();
-                yHeroi = montador.getHeroi().getY();
-                heroi.setX(xHeroi);
-                heroi.setY(yHeroi);
+                heroi.setX(montador.getHeroi().getX());
+                heroi.setY(montador.getHeroi().getY());
                 controle.setHeroi(heroi);
             }
 
