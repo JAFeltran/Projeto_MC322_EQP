@@ -53,7 +53,7 @@ public class Montador {
                         mapa.setAtorNaPosicao(ator, i, j);
                         break;
                     case "o":
-                        ator = new Obstaculo(i, j);
+                        ator = new Ator(i, j, 'o');
                         mapa.setAtorNaPosicao(ator, i, j);
                         break;
                     case "i":
@@ -62,7 +62,7 @@ public class Montador {
                     case "c":
                         xChefe = i;
                         yChefe = j;
-                        //gerarChefe(xChefe, yChefe);
+                        gerarChefe(xChefe, yChefe);
                         break;
                     case "s":
                         ator = new Ator(i, j, 's');
