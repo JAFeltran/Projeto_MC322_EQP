@@ -6,23 +6,23 @@ public class AtorVisual {
 
     // Construtor
     public AtorVisual() {
-        //icone = endereco fumaca
+        icone = "assets/Mapa/Fumaça.png";
     }
 
     // Setters
     public void setIcone(char tipo, int fase) {
         switch (tipo) {
             case '_':
-                //icone = endereco grama
+                icone = "assets/Mapa/Vazio.png";
                 break;
             case 'o':
-                //icone = endereco obstaculo
+                icone = "assets/Mapa/Obstáculo.png";
                 break;
             case 'i':
                 setIconeInimigo(fase);
                 break;
             case 'h':
-                //icone = endereco heroi
+                icone = "assets/Mapa/Herói.png";
                 break;
             case 'c':
                 setIconeChefe(fase);
@@ -54,7 +54,26 @@ public class AtorVisual {
     }
 
     public void setIconeChefe(int fase) {
-        // switch pra cada fase e icone
+        switch (fase) {
+            case 1:
+                icone = "assets/Inimigos/Mamute.png";
+                break;
+            case 2:
+                icone = "assets/Inimigos/Líder Bárbaro.png";
+                break;
+            case 3:
+                icone = "assets/Inimigos/Mago.png";
+                break;
+            case 4:
+                icone = "assets/Inimigos/Rei.png";
+                break;
+            case 5:
+                icone = "assets/Inimigos/Tanque.png";
+                break;
+            case 6:
+                icone = "assets/Inimigos/Super Alienígena.png";
+                break;
+        }
     }
 
     // Getters
