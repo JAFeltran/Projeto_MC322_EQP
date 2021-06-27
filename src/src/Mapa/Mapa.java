@@ -28,11 +28,9 @@ public class Mapa implements IMapa {
 
     // IMapaVisual
     public void ajustarVisibilidade(int visao, int xHeroi, int yHeroi, int fase) {
-        if (visao == 0) {
-            visual.setAtorVisualNaPosicao(xHeroi, yHeroi, 'h', fase);
-            // problema: e se esse espaco for ocupado por alguma outra coisa alem do heroi?
-        }
-        else if (visao >= 1) {
+        visual.setAtorVisualNaPosicao(xHeroi, yHeroi, 'h', fase);
+
+        if (visao >= 1) {
             visual.setAtorVisualNaPosicao(xHeroi + 1, yHeroi, mapa[xHeroi + 1][yHeroi].getTipo(), fase);
             visual.setAtorVisualNaPosicao(xHeroi - 1, yHeroi, mapa[xHeroi - 1][yHeroi].getTipo(), fase);
             visual.setAtorVisualNaPosicao(xHeroi, yHeroi + 1, mapa[xHeroi][yHeroi + 1].getTipo(), fase);

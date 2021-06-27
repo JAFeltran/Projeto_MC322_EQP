@@ -22,11 +22,13 @@ public class Controle implements IControle {
     private ArrayList<IItem> itens;
     private IItem chave;
     private Random random;
+    private boolean acabou;
 
     // Construtor
     public Controle() {
         random = new Random();
         itens = new ArrayList<IItem>();
+        acabou = false;
         setFase(1);
     }
 
@@ -111,6 +113,20 @@ public class Controle implements IControle {
         char movimento = heroi.verificarMovimento(x, y);
 
         switch (movimento) {
+            case 'c':
+                inimigo = (ICombate)heroi.getInimigoNaPosicao(x, y);
+                new PainelBatalha(heroi, inimigo, fase);
+
+                if (heroi.getVivo()) {
+                    pegarItem();
+                    mover(x, y);
+
+                    if (random.nextInt(4) == 3) {
+                        heroi.curar();
+                    }
+                }
+
+                break;
             case 'i':
                 inimigo = (ICombate)heroi.getInimigoNaPosicao(x, y);
                 new PainelBatalha(heroi, inimigo, fase);
@@ -125,6 +141,20 @@ public class Controle implements IControle {
                 }
 
                 break;
+            case 's':
+                if (heroi.pegouChave()) {
+                    acabou = true;
+                    if (fase < 6) {
+                        if (JOptionPane.showConfirmDialog(new JFrame(), "O Herói conseguiu derrotar o mal nessa era.\nVocê deseja continuar nessa aventura e avançar para a próxima fase?", "Sucesso!", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, new ImageIcon("assets/Controle/chefe.png")) != 0) {
+                            System.exit(0);
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(new JFrame(), "O Herói protegeu a humanidade! Parabéns!", "Parabéns!", JOptionPane.INFORMATION_MESSAGE, new ImageIcon("assets/Controle/chefe.png"));
+                        System.exit(0);
+                    }
+
+                    break;
+                }
             case 'o':
                 JOptionPane.showMessageDialog(new JFrame(), "O Herói não pode se mover para lá!", "Aviso", JOptionPane.WARNING_MESSAGE, new ImageIcon("assets/Controle/atencao.png"));
                 break;
