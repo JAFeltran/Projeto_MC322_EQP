@@ -152,13 +152,6 @@ public class PainelBatalha extends JFrame implements ActionListener {
                 atual = 0;
                 sequencia.add(random.nextInt(botoes.length));
 
-                try {
-                    Thread.sleep(500);
-                } catch (InterruptedException exception) {
-                    exception.printStackTrace();
-                    System.exit(1);
-                }
-
                 if (!inimigo.getVivo()) {
                     mensagem = "O Herói conseguiu derrotar o inimigo!";
                     JOptionPane.showMessageDialog(new JFrame(), mensagem, "Vitória!", JOptionPane.INFORMATION_MESSAGE, new ImageIcon("assets/PainelBatalha/caveira.png"));
@@ -166,23 +159,35 @@ public class PainelBatalha extends JFrame implements ActionListener {
                     return;
                 }
 
-                apresentar();
+                if (((IAtor)inimigo).getTipo() == 'c') {
+                    heroi.receberDano(inimigo.causarDano());
+                    mensagem = "O poderoso chefe atacou o Herói!";
+                    JOptionPane.showMessageDialog(new JFrame(), mensagem, "Contra-ataque", JOptionPane.INFORMATION_MESSAGE, new ImageIcon("assets/PainelBatalha/espada.png"));
+                }
             }
         } else {
             heroi.receberDano(inimigo.causarDano());
             mensagem = "O inimigo se defendeu e contra-atacou o Herói!";
             JOptionPane.showMessageDialog(new JFrame(), mensagem, "Contra-ataque", JOptionPane.INFORMATION_MESSAGE, new ImageIcon("assets/PainelBatalha/escudo.png"));
-            
-            if (!heroi.getVivo()) {
-                mensagem = "As forças do mal são fortes demais e derrotaram o Herói...";
-                JOptionPane.showMessageDialog(new JFrame(), mensagem, "Derrota!", JOptionPane.INFORMATION_MESSAGE, new ImageIcon("assets/PainelBatalha/derrota.png"));
-                this.dispose();
-                return;
-            }
-
-            atual = 0;
-            apresentar();
         }
+            
+        if (!heroi.getVivo()) {
+            mensagem = "As forças do mal são fortes demais e derrotaram o Herói...";
+            JOptionPane.showMessageDialog(new JFrame(), mensagem, "Derrota!", JOptionPane.INFORMATION_MESSAGE, new ImageIcon("assets/PainelBatalha/derrota.png"));
+            this.dispose();
+            return;
+        }
+
+        atual = 0;
+
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException exception) {
+            exception.printStackTrace();
+            System.exit(1);
+        }
+
+        apresentar();
     }
 
     // TODO Remover abaixo depois de testar =D

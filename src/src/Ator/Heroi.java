@@ -79,4 +79,12 @@ public class Heroi extends Ator implements IHeroi {
             vida -= 10;
         }
     }
+
+    public void curar() {
+        if (vida + (vidaMax / 2) > vidaMax) {
+            vida = vidaMax;
+        } else {
+            vida += (vidaMax / 2);
+        }
+    }
 }

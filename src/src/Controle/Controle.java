@@ -118,6 +118,10 @@ public class Controle implements IControle {
                 if (heroi.getVivo()) {
                     pegarItem();
                     mover(x, y);
+
+                    if (random.nextInt(4) == 3) {
+                        heroi.curar();
+                    }
                 }
 
                 break;

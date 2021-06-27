@@ -7,4 +7,6 @@ public interface IHeroi extends IAtor, ICombate, IAcao {
     // Getters
     public int getVida();
     public int getVidaMax();
+
+    public void curar();
 }
