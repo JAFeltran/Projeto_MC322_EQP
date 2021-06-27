@@ -2,6 +2,7 @@ package src.Painel;
 
 import javax.swing.*;
 
+import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.event.*;
 
@@ -9,7 +10,7 @@ import src.Controle.*;
 
 public class PainelPrincipal extends JFrame implements ActionListener {
     // Atributos
-    private JLabel fundo, labelJogar;
+    private JLabel fundo, labelJogar, vida;
     private JButton jogar1, jogar2;
     private JButton botoes[][];
     private IControle controle;
@@ -64,6 +65,11 @@ public class PainelPrincipal extends JFrame implements ActionListener {
         fundo.remove(jogar2);        
         botoes = new JButton[7][7];
 
+        vida = new JLabel("VIDA: " + controle.getHeroi().getVida() + "/" + controle.getHeroi().getVidaMax());
+        vida.setForeground(Color.WHITE);
+        vida.setOpaque(true);
+        vida.setBounds(500, 25, 100, 25);
+
         String mensagem = "Clique em um quadrado visível para mover o Herói para lá.\nAo mover o Herói para o local onde está um Inimigo, uma batalha épica se iniciará!";
         JOptionPane.showMessageDialog(new JFrame(), mensagem, "Instruções", JOptionPane.INFORMATION_MESSAGE, new ImageIcon("assets/PainelBatalha/info.png"));
         
@@ -89,6 +95,7 @@ public class PainelPrincipal extends JFrame implements ActionListener {
                 fundo.add(botoes[i][j]);
             }
         }
+        vida.setText("VIDA: " + controle.getHeroi().getVida() + "/" + controle.getHeroi().getVidaMax());
     }
 
     // ActionListener
