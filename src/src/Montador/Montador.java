@@ -7,7 +7,7 @@ import static src.CSV.LeitorCSV.lerCSV;
 
 import java.util.Random;
 
-public class Montador {
+public class Montador implements IMontador {
     // Atributos
     private int fase;
     private String caminhoCSV;

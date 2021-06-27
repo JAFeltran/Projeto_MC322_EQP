@@ -7,6 +7,7 @@ public interface IControle {
     public void setFase(int fase);
     public boolean getVivo();
     public boolean getAcabou();
+    public IHeroi getHeroi();
     public String getVisualNaPosicao(int x, int y);
     public void jogada(int x, int y);
 }
