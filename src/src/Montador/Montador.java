@@ -81,6 +81,8 @@ public class Montador implements IMontador {
         heroi = new Heroi(xHeroi, yHeroi, mapa);
 
         definirTerritorioChefe(xChefe, yChefe);
+
+        mapa.ajustarVisibilidade(0, xHeroi, yHeroi, fase);
     }
 
     public void definirTerritorioChefe(int x, int y) {

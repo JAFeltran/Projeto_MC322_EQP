@@ -85,8 +85,11 @@ public class PainelPrincipal extends JFrame implements IPainelPrincipal {
                 fundo.add(botoes[i][j]);
             }
         }
+
+        atualizarMapa();
     }
 
+    // Atualiza os visuais do Mapa
     private void atualizarMapa() {
         for (int i = 0; i < 7; i ++) {
             for (int j = 0; j < 7; j ++) {

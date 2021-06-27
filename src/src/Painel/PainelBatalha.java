@@ -12,7 +12,7 @@ import java.util.Random;
 import src.Ator.*;
 import src.Mapa.Mapa;
 
-public class PainelBatalha extends JFrame implements ActionListener {
+public class PainelBatalha extends JFrame implements IPainelBatalha {
     // Atributos
     private Color cores[] = {Color.RED.darker(), Color.GREEN.darker(), Color.YELLOW.darker(), Color.BLUE.darker()};
     private JPanel paineis[] = new JPanel[cores.length];
@@ -24,6 +24,7 @@ public class PainelBatalha extends JFrame implements ActionListener {
     private ArrayList<Integer> sequencia;
     private int fase, atual, tempo;
     private String mensagem;
+    private boolean acabou;
 
     private ICombate heroi, inimigo;
 
@@ -32,6 +33,7 @@ public class PainelBatalha extends JFrame implements ActionListener {
         super("Batalha!");
         atual = 0;
         random = new Random();
+        acabou = false;
 
         if (fase > 0 && fase < 7) {
             tempo = fase * 125;
@@ -68,6 +70,11 @@ public class PainelBatalha extends JFrame implements ActionListener {
         
         JOptionPane.showMessageDialog(new JFrame(), mensagem, "Instruções", JOptionPane.INFORMATION_MESSAGE, new ImageIcon("assets/PainelBatalha/info.png"));
         novaBatalha();
+    }
+
+    // IPainelBatalha
+    public boolean getAcabou() {
+        return acabou;
     }
 
     // Inicia uma nova batalha
@@ -155,6 +162,7 @@ public class PainelBatalha extends JFrame implements ActionListener {
                 if (!inimigo.getVivo()) {
                     mensagem = "O Herói conseguiu derrotar o inimigo!";
                     JOptionPane.showMessageDialog(new JFrame(), mensagem, "Vitória!", JOptionPane.INFORMATION_MESSAGE, new ImageIcon("assets/PainelBatalha/caveira.png"));
+                    acabou = true;
                     this.dispose();
                     return;
                 }
@@ -174,7 +182,8 @@ public class PainelBatalha extends JFrame implements ActionListener {
         if (!heroi.getVivo()) {
             mensagem = "As forças do mal são fortes demais e derrotaram o Herói...";
             JOptionPane.showMessageDialog(new JFrame(), mensagem, "Derrota!", JOptionPane.INFORMATION_MESSAGE, new ImageIcon("assets/PainelBatalha/derrota.png"));
-            this.dispose();
+            acabou = true;
+            System.exit(0);
             return;
         }
 

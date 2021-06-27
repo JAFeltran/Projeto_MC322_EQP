@@ -10,7 +10,7 @@ import javax.swing.JFrame;
 import src.Ator.*;
 import src.Item.IItem;
 import src.Item.Item;
-import src.Painel.PainelBatalha;
+import src.Painel.*;
 
 public class Controle implements IControle {
     // Atributos
@@ -119,7 +119,13 @@ public class Controle implements IControle {
             case 'c':
             case 'i':
                 inimigo = (ICombate) heroi.getInimigoNaPosicao(x, y);
-                new PainelBatalha(heroi, inimigo, fase);
+                IPainelBatalha batalha = new PainelBatalha(heroi, inimigo, fase);
+
+                while (true) {
+                    if (batalha.getAcabou()) {
+                        break;
+                    }
+                }
 
                 if (heroi.getVivo()) {
                     pegarItem();
