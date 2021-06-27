@@ -53,6 +53,22 @@ public class Heroi extends Ator implements IHeroi {
         return vidaMax;
     }
 
+    public void curar() {
+        if (vida + (vidaMax / 2) > vidaMax) {
+            vida = vidaMax;
+        } else {
+            vida += (vidaMax / 2);
+        }
+    }
+
+    public boolean pegouChave() {
+        if (inventario[3] != null) {
+            return true;
+        }
+        
+        return false;
+    }
+
     public boolean getVivo() {
         if (vida > 0) {
             return true;
@@ -91,14 +107,6 @@ public class Heroi extends Ator implements IHeroi {
         }
         else {
             vida -= 10;
-        }
-    }
-
-    public void curar() {
-        if (vida + (vidaMax / 2) > vidaMax) {
-            vida = vidaMax;
-        } else {
-            vida += (vidaMax / 2);
         }
     }
 }
