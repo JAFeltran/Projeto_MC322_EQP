@@ -10,14 +10,12 @@ import javax.swing.JFrame;
 import src.Ator.*;
 import src.Item.IItem;
 import src.Item.Item;
-import src.Painel.IPainelPrincipal;
 import src.Painel.PainelBatalha;
 
 public class Controle implements IControle {
     // Atributos
     private IHeroi heroi;
     private ICombate inimigo;
-    private IPainelPrincipal painel;
     private int fase;
     private ArrayList<IItem> itens;
     private IItem chave;
@@ -81,18 +79,13 @@ public class Controle implements IControle {
         return heroi.getVivo();
     }
 
-    public void connectPainel(IPainelPrincipal painel) {
-        this.painel = painel;
+    public boolean getAcabou() {
+        return acabou;
     }
 
     // Atualiza a posição do Herói
     private void mover(int x, int y) {
-        int xAtual = heroi.getX();
-        int yAtual = heroi.getY();
-
         heroi.mover(x, y, fase);
-
-        // TODO atualizar quais quadrados são visíveis e quais não são mais
     }
 
     // Fornece um item ao Herói como recompensa por derrotar um inimigo
@@ -143,18 +136,19 @@ public class Controle implements IControle {
                 break;
             case 's':
                 if (heroi.pegouChave()) {
-                    acabou = true;
                     if (fase < 6) {
                         if (JOptionPane.showConfirmDialog(new JFrame(), "O Herói conseguiu derrotar o mal nessa era.\nVocê deseja continuar nessa aventura e avançar para a próxima fase?", "Sucesso!", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, new ImageIcon("assets/Controle/chefe.png")) != 0) {
                             System.exit(0);
                         }
                     } else {
-                        JOptionPane.showMessageDialog(new JFrame(), "O Herói protegeu a humanidade! Parabéns!", "Parabéns!", JOptionPane.INFORMATION_MESSAGE, new ImageIcon("assets/Controle/chefe.png"));
+                        JOptionPane.showMessageDialog(new JFrame(), "O Herói cumpriu sua missão e protegeu a humanidade! Parabéns!", "Parabéns!", JOptionPane.INFORMATION_MESSAGE, new ImageIcon("assets/Controle/chefe.png"));
                         System.exit(0);
                     }
 
-                    break;
+                    acabou = true;
                 }
+
+                break;
             case 'o':
                 JOptionPane.showMessageDialog(new JFrame(), "O Herói não pode se mover para lá!", "Aviso", JOptionPane.WARNING_MESSAGE, new ImageIcon("assets/Controle/atencao.png"));
                 break;

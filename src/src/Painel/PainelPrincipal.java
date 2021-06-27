@@ -18,7 +18,6 @@ public class PainelPrincipal extends JFrame implements IPainelPrincipal {
     public PainelPrincipal(IControle controle) {
         super("O Herói das Eras");
         this.controle = controle;
-        controle.connectPainel(this);
 
         criarTela1();
         pack();
