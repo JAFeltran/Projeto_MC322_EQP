@@ -5,7 +5,7 @@ import src.Controle.*;
 import src.Montador.*;
 import src.Painel.*;
 
-public class AppHeroiDasEeras {
+public class AppHeroiDasEras {
 
     public static void main(String[] args) {
         IPainelPrincipal painel;

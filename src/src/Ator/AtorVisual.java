@@ -13,6 +13,7 @@ public class AtorVisual {
     public void setIcone(char tipo, int fase) {
         switch (tipo) {
             case '_':
+            case 't':
                 icone = "assets/Mapa/Vazio.png";
                 break;
             case 'o':
@@ -20,9 +21,6 @@ public class AtorVisual {
                 break;
             case 'i':
                 setIconeInimigo(fase);
-                break;
-            case 't':
-                icone = "assets/Mapa/Vazio.png";
                 break;
             case 'h':
                 icone = "assets/Mapa/Heroi.png";
