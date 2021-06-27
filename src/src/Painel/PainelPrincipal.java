@@ -7,11 +7,11 @@ import java.awt.event.*;
 
 import src.Controle.*;
 
-public class PainelPrincipal extends JFrame implements IPainelPrincipal {
+public class PainelPrincipal extends JFrame implements ActionListener {
     // Atributos
     private JLabel fundo, labelJogar;
     private JButton jogar1, jogar2;
-    private JButton botoes[];
+    private JButton botoes[][];
     private IControle controle;
 
     // Construtor
@@ -62,39 +62,33 @@ public class PainelPrincipal extends JFrame implements IPainelPrincipal {
     private void criarMapa() {
         fundo.setIcon(new ImageIcon("assets/PainelPrincipal/mapa.png"));
         fundo.remove(jogar2);        
-        botoes = new JButton[49];
+        botoes = new JButton[7][7];
 
         String mensagem = "Clique em um quadrado visível para mover o Herói para lá.\nAo mover o Herói para o local onde está um Inimigo, uma batalha épica se iniciará!";
         JOptionPane.showMessageDialog(new JFrame(), mensagem, "Instruções", JOptionPane.INFORMATION_MESSAGE, new ImageIcon("assets/PainelBatalha/info.png"));
         
         for (int i = 0; i < 7; i ++) {
             for (int j = 0; j < 7; j ++) {
-                int n = (7 * i) + j;
-                botoes[n] = new JButton();
-                botoes[n].addActionListener(this);
-                botoes[n].setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-                botoes[n].setBounds(42 + (j * 90), 48 + (i * 90), 80, 80);
+                botoes[i][j] = new JButton();
+                botoes[i][j].addActionListener(this);
+                botoes[i][j].setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                botoes[i][j].setBounds(42 + (j * 90), 48 + (i * 90), 80, 80);
                 
-                // TODO trocar abaixo pelas imagens corretas e setar tudo invisível a não ser perto do herói... talvez tenha que mudar o construtor pra receber a posição do herói
-                JLabel label = new JLabel("" + n, JLabel.CENTER);
-                botoes[n].add(label);
-                fundo.add(botoes[n]);
-
-                // TODO acho que isso aqui vai funcionar assim:
-                // Quando o jogador clica no botão, ele avisa o controle qual botão foi e o controle se vira pra resolver.
-                // Quando for mover o herói, o controle pode, além de alterar a posição do herói, calcular quais casas são visíveis e mandar o controle deixar essas visíveis e deixar as outras que não são mais visíveis, invisíveis.
-                // Fazendo isso, não tem como o jogador se mover pra algum lugar não acessível, mas a visibilidade do herói teria que ser sempre maior ou igual a 1, se não não daria pra mover at all.
-                // Qualquer coisa a gente pode, em vez de usar o setVisible, só mudar a imagem do label do botão pra uma imagem de desconhecido ou a imagem dele mesmo.
-
-                //botoes[n].setVisible(false);
+                JLabel label = new JLabel(new ImageIcon(controle.getVisualNaPosicao(i, j)));
+                botoes[i][j].add(label);
+                fundo.add(botoes[i][j]);
             }
         }
     }
-    
-    // Altera a visibilidade do botão na posição x, y
-    public void setVisibilidadeBotao(int x, int y, boolean visivel) {
-        // Ler o "to do" acima
-        botoes[(x * 7) + y].setVisible(true);
+
+    private void atualizarMapa() {
+        for (int i = 0; i < 7; i ++) {
+            for (int j = 0; j < 7; j ++) {
+                JLabel label = new JLabel(new ImageIcon(controle.getVisualNaPosicao(i, j)));
+                botoes[i][j].add(label);
+                fundo.add(botoes[i][j]);
+            }
+        }
     }
 
     // ActionListener
@@ -106,9 +100,9 @@ public class PainelPrincipal extends JFrame implements IPainelPrincipal {
         } else {
             for (int i = 0; i < 7; i ++) {
                 for (int j = 0; j < 7; j ++) {
-                    int n = (7 * i) + j;
-                    if (e.getSource() == botoes[n]) {
+                    if (e.getSource() == botoes[i][j]) {
                         controle.jogada(i, j);
+                        atualizarMapa();
                     }
                 }
             }

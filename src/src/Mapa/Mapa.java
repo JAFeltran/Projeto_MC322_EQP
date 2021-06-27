@@ -51,4 +51,8 @@ public class Mapa implements IMapa {
             }
         }
     }
+
+    public String getVisualNaPosicao(int x, int y) {
+        return visual.getAtorVisualNaPosicao(x, y).getIcone();
+    }
 }

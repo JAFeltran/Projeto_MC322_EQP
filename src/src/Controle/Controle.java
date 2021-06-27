@@ -83,6 +83,10 @@ public class Controle implements IControle {
         return acabou;
     }
 
+    public String getVisualNaPosicao(int x, int y) {
+        return heroi.getVisualNaPosicao(x, y);
+    }
+
     // Atualiza a posição do Herói
     private void mover(int x, int y) {
         heroi.mover(x, y, fase);
@@ -107,19 +111,6 @@ public class Controle implements IControle {
 
         switch (movimento) {
             case 'c':
-                inimigo = (ICombate)heroi.getInimigoNaPosicao(x, y);
-                new PainelBatalha(heroi, inimigo, fase);
-
-                if (heroi.getVivo()) {
-                    pegarItem();
-                    mover(x, y);
-
-                    if (random.nextInt(4) == 3) {
-                        heroi.curar();
-                    }
-                }
-
-                break;
             case 'i':
                 inimigo = (ICombate)heroi.getInimigoNaPosicao(x, y);
                 new PainelBatalha(heroi, inimigo, fase);
@@ -161,3 +152,5 @@ public class Controle implements IControle {
         }
     } 
 }
+
+// TODO Não deixar o herói se mover para qualquer lugar
