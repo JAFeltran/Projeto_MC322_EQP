@@ -121,9 +121,12 @@ public class Controle implements IControle {
                 inimigo = (ICombate) heroi.getInimigoNaPosicao(x, y);
                 IPainelBatalha batalha = new PainelBatalha(heroi, inimigo, fase);
 
-                while (true) {
-                    if (batalha.getAcabou()) {
-                        break;
+                while (!batalha.getAcabou()) {
+                    try {
+                        Thread.currentThread().wait();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                        System.exit(1);
                     }
                 }
 

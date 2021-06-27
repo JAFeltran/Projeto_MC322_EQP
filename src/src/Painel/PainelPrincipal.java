@@ -80,8 +80,10 @@ public class PainelPrincipal extends JFrame implements IPainelPrincipal {
                 botoes[i][j].setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
                 botoes[i][j].setBounds(42 + (j * 90), 48 + (i * 90), 80, 80);
                 
-                JLabel label = new JLabel(new ImageIcon(controle.getVisualNaPosicao(i, j)));
-                botoes[i][j].add(label);
+                botoes[i][j].setIcon(new ImageIcon(controle.getVisualNaPosicao(i, j)));
+
+                // JLabel label = new JLabel(new ImageIcon(controle.getVisualNaPosicao(i, j)));
+                // botoes[i][j].add(label);
                 fundo.add(botoes[i][j]);
             }
         }

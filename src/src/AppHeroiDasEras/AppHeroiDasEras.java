@@ -31,10 +31,12 @@ public class AppHeroiDasEras {
                 controle.setHeroi(heroi);
             }
 
-            while (true) {
-                if (controle.getAcabou()) {
-                    heroi = controle.getHeroi();
-                    break;
+            while (!controle.getAcabou()) {
+                try {
+                    Thread.currentThread().wait();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                    System.exit(1);
                 }
             }
         }
