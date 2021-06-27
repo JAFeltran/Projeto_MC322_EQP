@@ -6,7 +6,7 @@ public class AtorVisual {
 
     // Construtor
     public AtorVisual() {
-        icone = "assets/Mapa/Fumaça.png";
+        icone = "assets/Mapa/Fumaca.png";
     }
 
     // Setters
@@ -16,13 +16,16 @@ public class AtorVisual {
                 icone = "assets/Mapa/Vazio.png";
                 break;
             case 'o':
-                icone = "assets/Mapa/Obstáculo.png";
+                icone = "assets/Mapa/Obstaculo.png";
                 break;
             case 'i':
                 setIconeInimigo(fase);
                 break;
+            case 't':
+                icone = "assets/Mapa/Vazio.png";
+                break;
             case 'h':
-                icone = "assets/Mapa/Herói.png";
+                icone = "assets/Mapa/Heroi.png";
                 break;
             case 'c':
                 setIconeChefe(fase);
@@ -36,19 +39,19 @@ public class AtorVisual {
                 icone = "assets/Inimigos/Tigre-Dentes-de-Sabre.png";
                 break;
             case 2:
-                icone = "assets/Inimigos/Bárbaro.png";
+                icone = "assets/Inimigos/Barbaro.png";
                 break;
             case 3:
                 icone = "assets/Inimigos/Cavaleiro.png";
                 break;
             case 4:
-                icone = "assets/Inimigos/Soldado Francês.png";
+                icone = "assets/Inimigos/Soldado Frances.png";
                 break;
             case 5:
                 icone = "assets/Inimigos/Soldado Nazista.png";
                 break;
             case 6:
-                icone = "assets/Inimigos/Alienígena.png";
+                icone = "assets/Inimigos/Alienigena.png";
                 break;
         }
     }
@@ -59,7 +62,7 @@ public class AtorVisual {
                 icone = "assets/Inimigos/Mamute.png";
                 break;
             case 2:
-                icone = "assets/Inimigos/Líder Bárbaro.png";
+                icone = "assets/Inimigos/Lider Barbaro.png";
                 break;
             case 3:
                 icone = "assets/Inimigos/Mago.png";
@@ -71,7 +74,7 @@ public class AtorVisual {
                 icone = "assets/Inimigos/Tanque.png";
                 break;
             case 6:
-                icone = "assets/Inimigos/Super Alienígena.png";
+                icone = "assets/Inimigos/Super Alienigena.png";
                 break;
         }
     }

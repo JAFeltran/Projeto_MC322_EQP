@@ -71,6 +71,8 @@ public class Montador implements IMontador {
                     case "h":
                         xHeroi = i;
                         yHeroi = j;
+                        ator = new Ator(i, j, '_');
+                        mapa.setAtorNaPosicao(ator, i, j);
                         break;
                 }
             }
@@ -85,9 +87,10 @@ public class Montador implements IMontador {
         for (int i = x - 1; i <= x + 1; i++) {
             for (int j = y - 1; j <= y + 1; j++) {
                 if ((i >= 0 && i < 7) && (j >= 0 && j < 7)) {
-                    if (i != x && j != y) {
+                    //if (i != x && j != y) {
                         mapa.getAtorNaPosicao(i, j).setTipo('t');
-                    }
+                        // problema quando é tipo [x + 1][y]
+                    //}
                 }
             }
         }
