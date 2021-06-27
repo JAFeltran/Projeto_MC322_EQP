@@ -53,7 +53,7 @@ public class Montador {
                         mapa.setAtorNaPosicao(ator, i, j);
                         break;
                     case "o":
-                        ator = new Obstaculo(i, j);
+                        ator = new Ator(i, j, 'o');
                         mapa.setAtorNaPosicao(ator, i, j);
                         break;
                     case "i":
@@ -62,7 +62,7 @@ public class Montador {
                     case "c":
                         xChefe = i;
                         yChefe = j;
-                        //gerarChefe(xChefe, yChefe);
+                        gerarChefe(xChefe, yChefe);
                         break;
                     case "s":
                         ator = new Ator(i, j, 's');
@@ -83,7 +83,7 @@ public class Montador {
 
     public void definirTerritorioChefe(int x, int y) {
         IAtor ator;
-        
+
         if (x + 1 < 7) {
             ator = mapa.getAtorNaPosicao(x + 1, y);
             ator.setTipo('t');
@@ -176,5 +176,49 @@ public class Montador {
         inimigo = new Inimigo(x, y, habilidades[0], habilidades[1], habilidades[2]);
 
         mapa.setAtorNaPosicao(inimigo, x, y);
+    }
+
+    public void gerarChefe(int x, int y) {
+        int vida, ataque, defesa;
+        IAtor chefe;
+
+        switch (fase) {
+            case 1:
+                vida = 80;
+                ataque = 100;
+                defesa = 30;
+                break;
+            case 2:
+                vida = 130;
+                ataque = 180;
+                defesa = 100;
+                break;
+            case 3:
+                vida = 180;
+                ataque = 275;
+                defesa = 180;
+                break;
+            case 4:
+                vida = 250;
+                ataque = 370;
+                defesa = 230;
+                break;
+            case 5:
+                vida = 320;
+                ataque = 490;
+                defesa = 320;
+                break;
+            case 6:
+                vida = 400;
+                ataque = 630;
+                defesa = 420;
+                break;
+            default:
+                throw new IllegalStateException("Valor de fase inesperado: " + fase);
+        }
+
+        chefe = new Chefe(x, y, vida, ataque, defesa);
+
+        mapa.setAtorNaPosicao(chefe, x, y);
     }
 }
