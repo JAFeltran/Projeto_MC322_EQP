@@ -1,6 +1,13 @@
 package src.Ator;
 
 import src.Mapa.*;
+
+import java.util.Random;
+
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 import src.Item.*;
 
 public class Heroi extends Ator implements IHeroi {
@@ -11,6 +18,7 @@ public class Heroi extends Ator implements IHeroi {
     private int vida;
     private int vidaMax;
     private IMapa mapa;
+    private Random random;
 
     // Construtor
     public Heroi(int x, int y, IMapa mapa) {
@@ -19,6 +27,7 @@ public class Heroi extends Ator implements IHeroi {
         vidaMax = 300;
         this.mapa = mapa;
         inventario = new IItem[4];
+        random = new Random();
 
         inventario[0] = new Item(50, 0, "Desarmado");
         inventario[1] = new Item(0, 1, "Pelado");
@@ -68,6 +77,11 @@ public class Heroi extends Ator implements IHeroi {
     }
 
     public int causarDano() {
+        if (random.nextInt(20) == 19) {
+            JOptionPane.showMessageDialog(new JFrame(), "O Herói acertou um ataque crítico no inimigo!", "Ataque crítico!", JOptionPane.INFORMATION_MESSAGE, new ImageIcon("assets/PainelBatalha/espada.png"));
+            return (int)(1.5 * inventario[0].getValor());
+        }
+
         return inventario[0].getValor();
     }
 
