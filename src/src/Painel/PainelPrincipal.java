@@ -85,9 +85,11 @@ public class PainelPrincipal extends JFrame implements IPainelPrincipal {
                 // JLabel label = new JLabel(new ImageIcon(controle.getVisualNaPosicao(i, j)));
                 // botoes[i][j].add(label);
                 fundo.add(botoes[i][j]);
+                fundo.validate();
             }
         }
 
+        //this.validate();
         atualizarMapa();
     }
 
