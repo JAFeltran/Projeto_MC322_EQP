@@ -25,7 +25,7 @@ Conseguirá o herói cumprir sua missão? Isso depende somente de você...
 │
 ├── assets             <- mídias usadas no projeto
 │
-├── data               <- dados usados pelo jogo
+├── data               <- dados usados pelo jogo (.csv)
 │
 └── src                <- projeto em Java 
     │
@@ -48,13 +48,82 @@ Conseguirá o herói cumprir sua missão? Isso depende somente de você...
 
 [Vídeo do jogo completo](https://drive.google.com/file/d/197np9WtcwXe0baI0MZ2JjPMWj9X8xRG_/view?usp=sharing)
 
-# Slides
+# Slides do Projeto
 
 ## Slides da Prévia
 
 [Slides da prévia](assets/Apresentacao/Slides-Previa.pdf)
 
+## Slides da Apresentação Final
+
+* TODO
+
+## Relatório de Evolução
+
+O jogo foi planejado com base no estilo "Model-View-Control". O Jogador tem acesso a um painel ("View"), que apresenta um Mapa e seus Atores("Model") ao Jogador e permite que este se mova e interaja com outros Atores ("Control"). 
+A maior dificuldade enfrentada durante a elaboração do Projeto foi conciliar múltiplas janelas. Inicialmente, uma única janela seria utlizada para os mapas de todas as fases, e, ao iniciar um combate, uma nova janela seria aberta para interação com o jogador. Não foi possível, porém, fazer o programa esperar até que essa janela fosse fechada antes de continuar a execução. Assim, optamos por uma versão um pouco mais simples, em que o jogador precisaria apenas clicar sobre o inimigo para realizar um ataque. Aleatoriamente, o programa decide se a ação foi bem sucedida ou se o inimigo se defendeu e revidou o ataque.
+Outra mudança em relação ao planejamento inicial do jogo é a criação de uma classe própria para os Itens, que melhoram alguns atributos do Herói e permitem que o jogador conclua a fase atual. 
+Neste projeto, tentamos ao máximo utilizar interfaces em java.
+
+# Destaques de Código
+
+~~~java
+public class PainelPrincipal extends JFrame implements IPainelPrincipal {
+    ...
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == jogar1) { // Se o jogador apertar o botão "jogar" na tela inicial
+            criarTela2(); // Cria a segunda tela inicial do jogo
+        } else if (e.getSource() == jogar2) { // Se o jogador apertar o botão "jogar" na segunda tela inicial
+            criarMapa(fase); // Cria o mapa e os botões
+        } else { // Descobre o botão que o jogador clicou
+            for (int i = 0; i < 7; i ++) { 
+                for (int j = 0; j < 7; j ++) {
+                    if (e.getSource() == botoes[i][j]) {
+                        controle.jogada(i, j); // Informa a jogada ao controle
+                        atualizarMapa(); // Atualiza a parte visual após a jogada
+                    }
+                }
+            }
+        }
+    }
+}
+~~~
+
+Destacamos este trecho de código do programa que representa a independência dos componentes Controle e PainelPrincipal, além de ilustrar a utilização da interface gráfica. 
+
+# Destaques de Pattern
+`<Destaque de patterns adotados pela equipe. Sugestão de estrutura:>`
+
+* TODO
+
+## Diagrama do Pattern
+`<Diagrama do pattern dentro do contexto da aplicação.>`
+
+* TODO
+
+## Código do Pattern
+~~~java
+// Recorte do código do pattern seguindo as mesmas diretrizes de outros destaques
+public void algoInteressante(…) {
+   …
+   trechoInteressante = 100;
+}
+~~~
+
+> <Explicação de como o pattern foi adotado e quais suas vantagens, referenciando o diagrama.>
+
+* TODO
+
+# Conclusões e Trabalhos Futuros
+
+Este jogo possui um potencial muito grande para futuras melhorias. 
+Gostaríamos de implementar a interface gráfica de batalha planejada inicialmente, além de adicionar uma barra de vida do Herói e do inimigo em questão.
+Outra possibilidade de expansão seria a criação de fases aleatórias, em vez de lidas de um arquivo CSV.
+Melhorias de design possíveis incluem a utilização de Factories para criação dos componentes do jogo.
+
 # Documentação dos Componentes
+
+* TODO
 
 # Diagramas
 
