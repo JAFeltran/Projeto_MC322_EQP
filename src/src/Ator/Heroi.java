@@ -24,6 +24,8 @@ public class Heroi extends Ator implements IHeroi {
     public Heroi(int x, int y, IMapa mapa, int fase) {
         super(x, y, 'h');
 
+        random = new Random();
+
         vida = 300;
         vidaMax = 300;
         if (fase > 1) {

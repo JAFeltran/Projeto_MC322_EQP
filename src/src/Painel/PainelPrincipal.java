@@ -17,7 +17,6 @@ public class PainelPrincipal extends JFrame implements IPainelPrincipal {
     private JButton botoes[][];
     private IControle controle;
     private IMontador montador;
-    private IHeroi heroi = null;
     private int fase;
 
     // Construtor
@@ -84,7 +83,7 @@ public class PainelPrincipal extends JFrame implements IPainelPrincipal {
         if (fase != 1) {
             fundo = new JLabel(new ImageIcon("assets/PainelPrincipal/mapa.png"));
             add(fundo);
-            pack();
+            setSize(700, 700);
             setResizable(false);
             setLayout(null);
             setLocationRelativeTo(null);
@@ -109,7 +108,7 @@ public class PainelPrincipal extends JFrame implements IPainelPrincipal {
                 fundo.add(botoes[i][j]);
             }
         }
-
+        
         atualizarMapa();
     }
 

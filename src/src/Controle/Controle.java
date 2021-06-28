@@ -150,7 +150,7 @@ public class Controle implements IControle {
                         mover(x, y);
 
                         if (random.nextInt(4) == 3) {
-                            heroi.curar();
+                            heroi.curar(50);
                         }
                     }
 
