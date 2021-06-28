@@ -91,28 +91,86 @@ public class PainelPrincipal extends JFrame implements IPainelPrincipal {
 
 Destacamos este trecho de código do programa que representa a independência dos componentes Controle e PainelPrincipal, além de ilustrar a utilização da interface gráfica. 
 
-# Destaques de Pattern
-`<Destaque de patterns adotados pela equipe. Sugestão de estrutura:>`
-
-* TODO
-
-## Diagrama do Pattern
-`<Diagrama do pattern dentro do contexto da aplicação.>`
-
-* TODO
-
-## Código do Pattern
 ~~~java
-// Recorte do código do pattern seguindo as mesmas diretrizes de outros destaques
-public void algoInteressante(…) {
-   …
-   trechoInteressante = 100;
+public class Mapa implements IMapa { 
+    // Atributos
+    private IAtor mapa[][]; // Matriz de objetos que implementam a interface IAtor
+    ...
+
+    // Construtor
+    public Mapa() {
+        mapa = new IAtor[7][7];
+        ...
+    }
+    ...
 }
 ~~~
 
-> <Explicação de como o pattern foi adotado e quais suas vantagens, referenciando o diagrama.>
+Destacamos este trecho do código do programa que representa o uso do polimorfismo e de interfaces.
 
-* TODO
+# Destaques de Pattern
+
+## Diagrama do Pattern
+![Diagrama Pattern](assets/Apresentacao/Diagrama-Pattern.png)
+
+## Código do Pattern
+~~~java
+// Destaque: Componente "Mapa"
+
+public class Mapa implements IMapa {
+    // Atributos
+    private IAtor mapa[][];
+    private MapaVisual visual;
+
+    // Construtor
+    public Mapa() {
+        mapa = new IAtor[7][7];
+        visual = new MapaVisual();
+    }
+    ...
+}
+
+// Destaque: Componente "MapaVisual"
+
+public class MapaVisual {
+    // Atributos
+    private AtorVisual icones[][];
+
+    // Construtor
+    public MapaVisual() {
+        icones = new AtorVisual[7][7];
+
+        for (int i = 0; i < 7; i++) {
+            for (int j = 0; j < 7; j++) {
+                icones[i][j] = new AtorVisual();
+            }
+        }
+    }
+    ...
+}
+
+// Destaque: Componente "Controle"
+
+public interface IControle {
+    // Setters
+    public void setHeroi(IHeroi heroi);
+    public void setFase(int fase);
+    public void connectPainel(JFrame painel);
+
+    // Getters
+    public String getVisualNaPosicao(int x, int y);
+
+    // Responde ao evento do jogador de clicar em um botão do mapa
+    public void jogada(int x, int y);
+}
+~~~
+
+O jogo foi planejado seguindo o pattern Model-View-Cotrol. 
+* O componente "Mapa" exerce a função de "Model", ou seja, armazena internamente o estado atual do mapa através de uma matriz de IAtores.
+* O componente "MapaVisual", juntamente com "AtorVisual" exerce a função de "View", ou seja, armazena, atualiza e apresenta ao jogador as imagens na tela.
+* O componente "Controle" exerce a função de "Control", ou seja, responde aos eventos de interação do jogador com a interface gráfica.
+
+Vantagens deste pattern incluem a possibilidade de reaproveitar o código modificando apenas um dos componentes, facilitação da manutenção e debug e facilitação de trabalho em equipe para programar.
 
 # Conclusões e Trabalhos Futuros
 
