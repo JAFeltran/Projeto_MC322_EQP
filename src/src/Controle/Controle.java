@@ -45,28 +45,28 @@ public class Controle implements IControle {
 
         switch (fase) {
             case 1:
-                itens.add(new Item(50, 0, "Machado de Pedra"));
+                itens.add(new Item(100, 0, "Machado de Pedra"));
                 itens.add(new Item(50, 1, "Gibao de Peles"));
                 chave = new Item(1, 3, "Chave");
                 break;
             case 2:
-                itens.add(new Item(100, 0, "Gladio"));
+                itens.add(new Item(150, 0, "Gladio"));
                 itens.add(new Item(100, 1, "Loriga Segmentada"));
                 chave = new Item(2, 3, "Chave");
                 break;
             case 3:
-                itens.add(new Item(175, 0, "Alabarda"));
+                itens.add(new Item(225, 0, "Alabarda"));
                 itens.add(new Item(175, 1, "Cota de Malha"));
                 chave = new Item(3, 3, "Chave");
                 break;
             case 4:
-                itens.add(new Item(250, 0, "Mosquete"));
+                itens.add(new Item(300, 0, "Mosquete"));
                 itens.add(new Item(250, 1, "Peitoral de Aco"));
                 itens.add(new Item(2, 2, "Luneta"));
                 chave = new Item(4, 3, "Chave");
                 break;
             case 5:
-                itens.add(new Item(350, 0, "Rifle"));
+                itens.add(new Item(400, 0, "Rifle"));
                 itens.add(new Item(350, 1, "Mascara de Gas"));
                 itens.add(new Item(3, 2, "Binoculo"));
                 chave = new Item(5, 3, "Chave");
