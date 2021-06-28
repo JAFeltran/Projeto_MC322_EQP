@@ -11,13 +11,12 @@ import javax.swing.JFrame;
 import src.Ator.*;
 import src.Item.IItem;
 import src.Item.Item;
-import src.Painel.*;
 
 public class Controle implements IControle {
     // Atributos
     private IHeroi heroi;
     private ICombate inimigo;
-    private int fase;
+    private int fase, dano;
     private ArrayList<IItem> itens;
     private IItem chave;
     private Random random;
@@ -40,6 +39,8 @@ public class Controle implements IControle {
     public void setFase(int fase) {
         this.fase = fase;
 
+        itens = new ArrayList<IItem>();
+
         switch (fase) {
             case 1:
                 itens.add(new Item(50, 0, "Machado de Pedra"));
@@ -49,7 +50,6 @@ public class Controle implements IControle {
             case 2:
                 itens.add(new Item(100, 0, "Gladio"));
                 itens.add(new Item(100, 1, "Loriga Segmentada"));
-                //itens.add(new Item(1, 2, "Tocha"));
                 chave = new Item(2, 3, "Chave");
                 break;
             case 3:
@@ -101,7 +101,7 @@ public class Controle implements IControle {
     // Fornece um item ao Herói como recompensa por derrotar um inimigo
     private void pegarItem() {
         if (((IAtor) inimigo).getTipo() == 'i' && itens.size() > 0) {
-            IItem item = itens.get(random.nextInt(itens.size()));
+            IItem item = itens.remove(random.nextInt(itens.size()));
             heroi.setItemInventario(item.getPosicao(), item.getValor(), item.getNome());
             JOptionPane.showMessageDialog(new JFrame(), "O Inimigo derrubou um item:\n" + item.getNome(), "Novo item!", JOptionPane.INFORMATION_MESSAGE, new ImageIcon("assets/Itens/Fase" + fase + "/" + item.getNome() + ".png"));
         }
@@ -119,18 +119,25 @@ public class Controle implements IControle {
                 case 'c':
                 case 'i':
                     inimigo = (ICombate) heroi.getInimigoNaPosicao(x, y);
-                    IPainelBatalha batalha = new PainelBatalha(heroi, inimigo, fase);
+                    dano = heroi.causarDano();
 
-                    while (!batalha.getAcabou()) {
-                        try {
-                            Thread.currentThread().wait();
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                            System.exit(1);
-                        }
+                    if (dano == 0) {
+                        heroi.receberDano(inimigo.causarDano());
+                        String mensagem = "O inimigo se defendeu e contra-atacou o Herói!";
+                        JOptionPane.showMessageDialog(new JFrame(), mensagem, "Contra-ataque", JOptionPane.INFORMATION_MESSAGE, new ImageIcon("assets/PainelBatalha/escudo.png"));
+                    } else {
+                        inimigo.receberDano(dano);
+                        String mensagem = "O Herói acertou um golpe no inimigo!";
+                        JOptionPane.showMessageDialog(new JFrame(), mensagem, "Acerto!", JOptionPane.INFORMATION_MESSAGE, new ImageIcon("assets/PainelBatalha/espada.png"));
                     }
 
-                    if (heroi.getVivo()) {
+                    if (!heroi.getVivo()) {
+                        String mensagem = "As forças do mal são fortes demais e derrotaram o Herói...";
+                        JOptionPane.showMessageDialog(new JFrame(), mensagem, "Derrota!", JOptionPane.INFORMATION_MESSAGE, new ImageIcon("assets/PainelBatalha/derrota.png"));
+                        System.exit(0);
+                    }
+
+                    if (!inimigo.getVivo()) {
                         pegarItem();
 
                         heroi.removerInimigo(x, y);
@@ -143,7 +150,7 @@ public class Controle implements IControle {
 
                     break;
                 case 's':
-                    if (heroi.pegouChave()) {
+                    if (heroi.pegouChave(fase)) {
                         if (fase < 6) {
                             if (JOptionPane.showConfirmDialog(new JFrame(), "O Herói conseguiu derrotar o mal nessa era.\nVocê deseja continuar nessa aventura e avançar para a próxima fase?", "Sucesso!", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, new ImageIcon("assets/Controle/chefe.png")) != 0) {
                                 System.exit(0);
@@ -153,7 +160,7 @@ public class Controle implements IControle {
                             JOptionPane.showMessageDialog(new JFrame(), "O Herói cumpriu sua missão e protegeu a humanidade! Parabéns!", "Parabéns!", JOptionPane.INFORMATION_MESSAGE, new ImageIcon("assets/Controle/chefe.png"));
                             System.exit(0);
                         }
-
+                        heroi.setItemInventario(3, 0, "Chave");
                         acabou = true;
                     }
                     else {
@@ -167,7 +174,7 @@ public class Controle implements IControle {
                     heroi.setVisualNaPosicao(x, y, 'o', fase);
                     break;
                 case 't':
-                    if (!heroi.pegouChave()) {
+                    if (!heroi.pegouChave(fase)) {
                         JOptionPane.showMessageDialog(new JFrame(), "O Herói sente que um grande mal se aproxima...", "Aviso", JOptionPane.WARNING_MESSAGE, new ImageIcon("assets/Controle/chefe.png"));
                     }
                     mover(x, y);

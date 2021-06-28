@@ -8,13 +8,12 @@ import src.Painel.*;
 public class AppHeroiDasEras {
 
     public static void main(String[] args) {
-        IPainelPrincipal painel;
         IControle controle = new Controle();
         int fase;
         IMontador montador;
         IHeroi heroi = null;
 
-        painel = new PainelPrincipal(controle);
+        new PainelPrincipal(controle);
 
         for (fase = 1; fase < 7; fase++) {
             montador = new Montador(fase, ("data/CSVs/Fase" + fase + ".csv"));

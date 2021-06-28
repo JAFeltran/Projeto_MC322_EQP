@@ -32,7 +32,7 @@ public class Heroi extends Ator implements IHeroi {
         inventario[0] = new Item(50, 0, "Desarmado");
         inventario[1] = new Item(0, 1, "Pelado");
         inventario[2] = new Item(1, 2, "Nada");
-        inventario[3] = null;
+        inventario[3] = new Item(0, 3, "Chave");
     }
 
     // IHeroi
@@ -69,8 +69,8 @@ public class Heroi extends Ator implements IHeroi {
         }
     }
 
-    public boolean pegouChave() {
-        if (inventario[3] != null) {
+    public boolean pegouChave(int fase) {
+        if (inventario[3].getValor() == fase) {
             return true;
         }
         
