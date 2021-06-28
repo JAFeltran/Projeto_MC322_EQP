@@ -189,8 +189,6 @@ Melhorias de design possíveis incluem a utilização de Factories para criaçã
 
 ![Diagrama Geral do Projeto](assets/Apresentacao/Diagrama-Geral.png)
 
-O jogo foi planejado com base no estilo "Model-View-Control". O Jogador tem acesso a um painel ("View"), que apresenta um Mapa e seus Atores("Model") ao Jogador e permite que este se mova e interaja com outros Atores ("Control"). 
-
 ## Componente Ator
 
 Representa as diferentes entidades que interagem durante o jogo: o Herói, Inimigos e Obstáculos.
@@ -344,5 +342,4 @@ Interfaces | IControleVisual, IVisual
 Classe | Descrição
 ----- | -----
 IOException | Verifica se o arquivo foi aberto corretamente.
-TamanhoInvalido | Indica que o arquivo .csv lido não tem um tamanho adequado para criar um mapa.
-MapaInvalido | Indica que o mapa armazenado no arquivo .csv é inválido.
+IllegalStateException | Verifica se foi solicitada uma fase incorreta.
