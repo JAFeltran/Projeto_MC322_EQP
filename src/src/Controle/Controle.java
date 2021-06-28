@@ -49,7 +49,7 @@ public class Controle implements IControle {
             case 2:
                 itens.add(new Item(100, 0, "Gladio"));
                 itens.add(new Item(100, 1, "Loriga Segmentada"));
-                itens.add(new Item(1, 2, "Tocha"));
+                //itens.add(new Item(1, 2, "Tocha"));
                 chave = new Item(2, 3, "Chave");
                 break;
             case 3:
@@ -164,6 +164,7 @@ public class Controle implements IControle {
                     break;
                 case 'o':
                     JOptionPane.showMessageDialog(new JFrame(), "O Herói não pode se mover para lá!", "Aviso", JOptionPane.WARNING_MESSAGE, new ImageIcon("assets/Controle/atencao.png"));
+                    heroi.setVisualNaPosicao(x, y, 'o', fase);
                     break;
                 case 't':
                     if (!heroi.pegouChave()) {

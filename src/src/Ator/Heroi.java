@@ -31,7 +31,7 @@ public class Heroi extends Ator implements IHeroi {
 
         inventario[0] = new Item(50, 0, "Desarmado");
         inventario[1] = new Item(0, 1, "Pelado");
-        inventario[2] = new Item(0, 2, "Nada");
+        inventario[2] = new Item(1, 2, "Nada");
         inventario[3] = null;
     }
 
