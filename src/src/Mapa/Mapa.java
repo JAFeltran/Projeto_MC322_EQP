@@ -26,6 +26,10 @@ public class Mapa implements IMapa {
         return mapa[x][y];
     }
 
+    public MapaVisual getVisual() {
+        return visual;
+    }
+
     // IMapaVisual
     public void ajustarVisibilidade(int visao, int xHeroi, int yHeroi, int fase) {
         visual.setAtorVisualNaPosicao(xHeroi, yHeroi, 'h', fase);

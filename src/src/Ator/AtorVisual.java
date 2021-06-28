@@ -28,6 +28,8 @@ public class AtorVisual {
             case 'c':
                 setIconeChefe(fase);
                 break;
+            case 's':
+                icone = "assets/Mapa/Saida.png";
         }
     }
 

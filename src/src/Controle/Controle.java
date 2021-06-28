@@ -154,6 +154,9 @@ public class Controle implements IControle {
 
                     acabou = true;
                 }
+                else {
+                    heroi.setVisualNaPosicao(x, y, 's', fase);
+                }
 
                 break;
             case 'o':
@@ -161,6 +164,7 @@ public class Controle implements IControle {
                 break;
             case 't':
                 JOptionPane.showMessageDialog(new JFrame(), "O Herói sente que um grande mal se aproxima...", "Aviso", JOptionPane.WARNING_MESSAGE, new ImageIcon("assets/Controle/chefe.png"));
+                mover(x, y);
                 break;
             case '_':
                 mover(x, y);

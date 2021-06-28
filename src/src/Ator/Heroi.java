@@ -41,6 +41,10 @@ public class Heroi extends Ator implements IHeroi {
         inventario[posicao].setNome(nome);
     }
 
+    public void setVisualNaPosicao(int x, int y, char tipo, int fase) {
+        mapa.getVisual().setAtorVisualNaPosicao(x, y, tipo, fase);
+    }
+
     public void removerInimigo(int x, int y) {
         mapa.setAtorNaPosicao(new Ator(x, y, '_'), x, y);
     }
@@ -90,6 +94,8 @@ public class Heroi extends Ator implements IHeroi {
     }
 
     public void mover(int x, int y, int fase) {
+        mapa.getVisual().setAtorVisualNaPosicao(super.getX(), super.getY(), mapa.getAtorNaPosicao(super.getX(), super.getY()).getTipo(), fase);
+
         super.setX(x);
         super.setY(y);
 
