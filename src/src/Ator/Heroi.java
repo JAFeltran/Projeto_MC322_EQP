@@ -64,7 +64,8 @@ public class Heroi extends Ator implements IHeroi {
     public void curar() {
         if (vida + (vidaMax / 2) > vidaMax) {
             vida = vidaMax;
-        } else {
+        }
+        else {
             vida += (vidaMax / 2);
         }
     }
@@ -73,7 +74,7 @@ public class Heroi extends Ator implements IHeroi {
         if (inventario[3] != null) {
             return true;
         }
-        
+
         return false;
     }
 
@@ -107,12 +108,17 @@ public class Heroi extends Ator implements IHeroi {
     }
 
     public int causarDano() {
-        if (random.nextInt(20) == 19) {
+        int acerto = random.nextInt(20);
+
+        if (acerto == 19) {
             JOptionPane.showMessageDialog(new JFrame(), "O Herói acertou um ataque crítico no inimigo!", "Ataque crítico!", JOptionPane.INFORMATION_MESSAGE, new ImageIcon("assets/PainelBatalha/espada.png"));
-            return (int)(1.5 * inventario[0].getValor());
+            return (int) (1.5 * inventario[0].getValor());
+        }
+        else if (acerto > 4) {
+            return inventario[0].getValor();
         }
 
-        return inventario[0].getValor();
+        return 0;
     }
 
     public void receberDano(int dano) {
