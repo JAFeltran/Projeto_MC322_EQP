@@ -61,6 +61,10 @@ public class Heroi extends Ator implements IHeroi {
         return mapa.getVisualNaPosicao(x, y);
     }
 
+    public int getValorItemInventario(int posicao) {
+        return inventario[posicao].getValor();
+    }
+
     public void curar() {
         if (vida + (vidaMax / 2) > vidaMax) {
             vida = vidaMax;

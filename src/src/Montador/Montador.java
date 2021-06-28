@@ -82,7 +82,7 @@ public class Montador implements IMontador {
 
         definirTerritorioChefe(xChefe, yChefe);
 
-        mapa.ajustarVisibilidade(0, xHeroi, yHeroi, fase);
+        mapa.ajustarVisibilidade(heroi.getValorItemInventario(2), xHeroi, yHeroi, fase);
     }
 
     public void definirTerritorioChefe(int x, int y) {

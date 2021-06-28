@@ -35,22 +35,44 @@ public class Mapa implements IMapa {
         visual.setAtorVisualNaPosicao(xHeroi, yHeroi, 'h', fase);
 
         if (visao >= 1) {
-            visual.setAtorVisualNaPosicao(xHeroi + 1, yHeroi, mapa[xHeroi + 1][yHeroi].getTipo(), fase);
-            visual.setAtorVisualNaPosicao(xHeroi - 1, yHeroi, mapa[xHeroi - 1][yHeroi].getTipo(), fase);
-            visual.setAtorVisualNaPosicao(xHeroi, yHeroi + 1, mapa[xHeroi][yHeroi + 1].getTipo(), fase);
-            visual.setAtorVisualNaPosicao(xHeroi, yHeroi - 1, mapa[xHeroi][yHeroi - 1].getTipo(), fase);
-
+            if (xHeroi + 1 < 7) {
+                visual.setAtorVisualNaPosicao(xHeroi + 1, yHeroi, mapa[xHeroi + 1][yHeroi].getTipo(), fase);
+            }
+            if (xHeroi - 1 >= 0) {
+                visual.setAtorVisualNaPosicao(xHeroi - 1, yHeroi, mapa[xHeroi - 1][yHeroi].getTipo(), fase);
+            }
+            if (yHeroi + 1 < 7) {
+                visual.setAtorVisualNaPosicao(xHeroi, yHeroi + 1, mapa[xHeroi][yHeroi + 1].getTipo(), fase);
+            }
+            if (yHeroi - 1 >= 0) {
+                visual.setAtorVisualNaPosicao(xHeroi, yHeroi - 1, mapa[xHeroi][yHeroi - 1].getTipo(), fase);
+            }
             if (visao >= 2) {
-                visual.setAtorVisualNaPosicao(xHeroi + 1, yHeroi + 1, mapa[xHeroi + 1][yHeroi + 1].getTipo(), fase);
-                visual.setAtorVisualNaPosicao(xHeroi - 1, yHeroi + 1, mapa[xHeroi - 1][yHeroi + 1].getTipo(), fase);
-                visual.setAtorVisualNaPosicao(xHeroi + 1, yHeroi - 1, mapa[xHeroi + 1][yHeroi - 1].getTipo(), fase);
-                visual.setAtorVisualNaPosicao(xHeroi - 1, yHeroi - 1, mapa[xHeroi - 1][yHeroi - 1].getTipo(), fase);
-
+                if (xHeroi + 1 < 7 && yHeroi + 1 < 7) {
+                    visual.setAtorVisualNaPosicao(xHeroi + 1, yHeroi + 1, mapa[xHeroi + 1][yHeroi + 1].getTipo(), fase);
+                }
+                if (xHeroi - 1 >= 0 && yHeroi + 1 < 7) {
+                    visual.setAtorVisualNaPosicao(xHeroi - 1, yHeroi + 1, mapa[xHeroi - 1][yHeroi + 1].getTipo(), fase);
+                }
+                if (xHeroi + 1 < 7 && yHeroi - 1 >= 0) {
+                    visual.setAtorVisualNaPosicao(xHeroi + 1, yHeroi - 1, mapa[xHeroi + 1][yHeroi - 1].getTipo(), fase);
+                }
+                if (xHeroi - 1 >= 0 && yHeroi - 1 >= 0) {
+                    visual.setAtorVisualNaPosicao(xHeroi - 1, yHeroi - 1, mapa[xHeroi - 1][yHeroi - 1].getTipo(), fase);
+                }
                 if (visao == 3) {
-                    visual.setAtorVisualNaPosicao(xHeroi + 2, yHeroi, mapa[xHeroi + 2][yHeroi].getTipo(), fase);
-                    visual.setAtorVisualNaPosicao(xHeroi - 2, yHeroi, mapa[xHeroi - 2][yHeroi].getTipo(), fase);
-                    visual.setAtorVisualNaPosicao(xHeroi, yHeroi + 2, mapa[xHeroi][yHeroi + 2].getTipo(), fase);
-                    visual.setAtorVisualNaPosicao(xHeroi, yHeroi - 2, mapa[xHeroi][yHeroi - 2].getTipo(), fase);
+                    if (xHeroi + 2 < 7) {
+                        visual.setAtorVisualNaPosicao(xHeroi + 2, yHeroi, mapa[xHeroi + 2][yHeroi].getTipo(), fase);
+                    }
+                    if (xHeroi - 2 >= 0) {
+                        visual.setAtorVisualNaPosicao(xHeroi - 2, yHeroi, mapa[xHeroi - 2][yHeroi].getTipo(), fase);
+                    }
+                    if (yHeroi + 2 < 7) {
+                        visual.setAtorVisualNaPosicao(xHeroi, yHeroi + 2, mapa[xHeroi][yHeroi + 2].getTipo(), fase);
+                    }
+                    if (yHeroi - 2 >= 0) {
+                        visual.setAtorVisualNaPosicao(xHeroi, yHeroi - 2, mapa[xHeroi][yHeroi - 2].getTipo(), fase);
+                    }
                 }
             }
         }
