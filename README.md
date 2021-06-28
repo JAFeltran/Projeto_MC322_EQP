@@ -56,7 +56,7 @@ Conseguirá o herói cumprir sua missão? Isso depende somente de você...
 
 ## Slides da Apresentação Final
 
-* TODO
+[Slides final](assets/Apresentacao/Slides-Final.pdf)
 
 ## Relatório de Evolução
 
