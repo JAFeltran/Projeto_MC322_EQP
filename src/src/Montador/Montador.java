@@ -78,7 +78,7 @@ public class Montador implements IMontador {
             }
         }
 
-        heroi = new Heroi(xHeroi, yHeroi, mapa);
+        heroi = new Heroi(xHeroi, yHeroi, mapa, fase);
 
         definirTerritorioChefe(xChefe, yChefe);
 

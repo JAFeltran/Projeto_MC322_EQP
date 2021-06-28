@@ -21,18 +21,19 @@ public class Heroi extends Ator implements IHeroi {
     private Random random;
 
     // Construtor
-    public Heroi(int x, int y, IMapa mapa) {
+    public Heroi(int x, int y, IMapa mapa, int fase) {
         super(x, y, 'h');
+
         vida = 300;
         vidaMax = 300;
+        if (fase > 1) {
+            vida += fase * 100;
+        }
+
         this.mapa = mapa;
         inventario = new IItem[4];
-        random = new Random();
 
-        inventario[0] = new Item(50, 0, "Desarmado");
-        inventario[1] = new Item(0, 1, "Pelado");
-        inventario[2] = new Item(1, 2, "Nada");
-        inventario[3] = new Item(0, 3, "Chave");
+        definirItensIniciais(fase);
     }
 
     // IHeroi
@@ -61,12 +62,51 @@ public class Heroi extends Ator implements IHeroi {
         return inventario[posicao].getValor();
     }
 
-    public void curar() {
-        if (vida + (vidaMax / 2) > vidaMax) {
+    public void definirItensIniciais(int fase) {
+        switch (fase) {
+            case 1:
+                inventario[0] = new Item(50, 0, "Desarmado");
+                inventario[1] = new Item(0, 1, "Pelado");
+                inventario[2] = new Item(1, 2, "Nada");
+                break;
+            case 2:
+                inventario[0] = new Item(100, 0, "Machado de Pedra");
+                inventario[1] = new Item(50, 1, "Gibao de Peles");
+                inventario[2] = new Item(1, 2, "Nada");
+                break;
+            case 3:
+                inventario[0] = new Item(150, 0, "Gladio");
+                inventario[1] = new Item(100, 1, "Loriga Segmentada");
+                inventario[2] = new Item(1, 2, "Nada");
+                break;
+            case 4:
+                inventario[0] = new Item(225, 0, "Alabarda");
+                inventario[1] = new Item(175, 1, "Cota de Malha");
+                inventario[2] = new Item(1, 2, "Nada");
+                break;
+            case 5:
+                inventario[0] = new Item(300, 0, "Mosquete");
+                inventario[1] = new Item(250, 1, "Peitoral de Aco");
+                inventario[2] = new Item(2, 2, "Luneta");
+                break;
+            case 6:
+                inventario[0] = new Item(400, 0, "Rifle");
+                inventario[1] = new Item(350, 1, "Mascara de Gas");
+                inventario[2] = new Item(3, 2, "Binoculo");
+                break;
+        }
+
+        inventario[3] = new Item(0, 3, "Sem Chave");
+    }
+
+    public void curar(int porcento) {
+        int cura = (porcento / 100) * vida;
+
+        if (vida + cura > vidaMax) {
             vida = vidaMax;
         }
         else {
-            vida += (vidaMax / 2);
+            vida += cura;
         }
     }
 
