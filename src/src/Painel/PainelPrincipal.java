@@ -97,8 +97,9 @@ public class PainelPrincipal extends JFrame implements IPainelPrincipal {
     private void atualizarMapa() {
         for (int i = 0; i < 7; i ++) {
             for (int j = 0; j < 7; j ++) {
-                JLabel label = new JLabel(new ImageIcon(controle.getVisualNaPosicao(i, j)));
-                botoes[i][j].add(label);
+                //JLabel label = new JLabel(new ImageIcon(controle.getVisualNaPosicao(i, j)));
+                //botoes[i][j].add(label);
+                botoes[i][j].setIcon(new ImageIcon(controle.getVisualNaPosicao(i,j)));
                 fundo.add(botoes[i][j]);
             }
         }
