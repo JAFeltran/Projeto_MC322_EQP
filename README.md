@@ -36,11 +36,15 @@ Conseguirá o herói cumprir sua missão? Isso depende somente de você...
     └── README.md      <- instruções básicas de instalação/execução
 ~~~
 
-# Vídeos
+# Vídeos do Projeto
 
 ## Vídeo da Prévia
 
 ![[Vídeo da prévia](https://drive.google.com/file/d/1uszDQPCGeER__hJ6rSXI5SbTS8QNMBl6/view?usp=sharing)](assets/Apresentacao/Thumbnail-Previa.png)
+
+## Vídeo do Jogo
+
+![[Vídeo do jogo](assets/Apresentacao/Videos-Final.mp4)](assets/Apresentacao/Thumbnail-Previa.png)
 
 # Slides
 
