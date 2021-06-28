@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="42473002-094b-4e69-bb7d-f78fbdce74d8" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="ProjectId" id="1uPDb7VYtgDXJpGdX8MyOWORPmN" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="false" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../MC322-DUPLA-EQP/lab06/src/mc322/lab06/Montador.java" />
+    <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="RunManager" selected="Application.AppHeroiDasEras">
+    <configuration name="AppHeroiDasEras" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="src.src.AppHeroiDasEras.AppHeroiDasEras" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="src.AppHeroiDasEras.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AppHeroiDasEras" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="src.AppHeroiDasEras.AppHeroiDasEras" />
+      <module name="Projeto_MC322_EQP" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="src.Painel.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Montador" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="src.Montador.Montador" />
+      <module name="Projeto_MC322_EQP" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="src.Montador.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PainelBatalha" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="src.Painel.PainelBatalha" />
+      <module name="Projeto_MC322_EQP" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="src.Painel.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PainelPrincipal" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="src.Painel.PainelPrincipal" />
+      <module name="Projeto_MC322_EQP" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="src.Painel.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Montador" />
+      <item itemvalue="Application.PainelPrincipal" />
+      <item itemvalue="Application.AppHeroiDasEras" />
+      <item itemvalue="Application.PainelBatalha" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.AppHeroiDasEras" />
+        <item itemvalue="Application.PainelPrincipal" />
+        <item itemvalue="Application.PainelBatalha" />
+        <item itemvalue="Application.AppHeroiDasEras" />
+        <item itemvalue="Application.Montador" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="42473002-094b-4e69-bb7d-f78fbdce74d8" name="Default Changelist" comment="" />
+      <created>1624558400950</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1624558400950</updated>
+      <workItem from="1624558403097" duration="12252000" />
+      <workItem from="1624656064417" duration="2315000" />
+      <workItem from="1624658767933" duration="321000" />
+      <workItem from="1624731659555" duration="11535000" />
+      <workItem from="1624815720679" duration="6662000" />
+      <workItem from="1624831374044" duration="18855000" />
+      <workItem from="1624874297069" duration="610000" />
+      <workItem from="1624875319821" duration="3936000" />
+      <workItem from="1624880928338" duration="482000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="super.x" language="JAVA" />
+      </configuration>
+    </watches-manager>
+  </component>
+</project>
