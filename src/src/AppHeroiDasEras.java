@@ -1,4 +1,4 @@
-package src.AppHeroiDasEras;
+package src;
 
 import src.Painel.*;
 

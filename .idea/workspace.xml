@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="42473002-094b-4e69-bb7d-f78fbdce74d8" name="Default Changelist" comment="" />
+    <list default="true" id="42473002-094b-4e69-bb7d-f78fbdce74d8" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/src/AppHeroiDasEras.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/src/AppHeroiDasEras.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -137,7 +139,7 @@
       <workItem from="1624831374044" duration="18855000" />
       <workItem from="1624874297069" duration="610000" />
       <workItem from="1624875319821" duration="3936000" />
-      <workItem from="1624880928338" duration="482000" />
+      <workItem from="1624880928338" duration="1074000" />
     </task>
     <servers />
   </component>
