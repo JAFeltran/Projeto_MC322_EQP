@@ -170,9 +170,20 @@ public class PainelBatalha extends JFrame implements IPainelBatalha {
                 if (((IAtor)inimigo).getTipo() == 'c') {
                     heroi.receberDano(inimigo.causarDano());
                     mensagem = "O poderoso chefe atacou o Herói!";
-                    JOptionPane.showMessageDialog(new JFrame(), mensagem, "Contra-ataque", JOptionPane.INFORMATION_MESSAGE, new ImageIcon("assets/PainelBatalha/espada.png"));
+                    JOptionPane.showMessageDialog(new JFrame(), mensagem, "Contra-ataque", JOptionPane.INFORMATION_MESSAGE, new ImageIcon("assets/PainelBatalha/escudo.png"));
                 }
-            }
+    
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException exception) {
+                    exception.printStackTrace();
+                    System.exit(1);
+                }
+    
+                apresentar();
+            } 
+
+            return;
         } else {
             heroi.receberDano(inimigo.causarDano());
             mensagem = "O inimigo se defendeu e contra-atacou o Herói!";
