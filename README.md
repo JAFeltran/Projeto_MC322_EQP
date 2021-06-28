@@ -181,37 +181,62 @@ Melhorias de design possíveis incluem a utilização de Factories para criaçã
 
 # Documentação dos Componentes
 
-* TODO
-
 # Diagramas
 
 ## Diagrama Geral do Projeto
 
 ![Diagrama Geral do Projeto](assets/Apresentacao/Diagrama-Geral-Final.png)
 
-## Componente Ator
+## Componente Atores
 
-Representa as diferentes entidades que interagem durante o jogo: o Herói, Inimigos e Obstáculos.
+Representa as diferentes entidades que interagem durante o jogo: o Herói, Inimigos e Chefes.
 
-![Componente Ator](assets/Apresentacao/Componente-Atores.png)
+![Componente Atores](assets/Apresentacao/Componente-Atores.png)
 
 **Ficha Técnica**
 Item | Detalhamento
 ----- | -----
-Classe | src.Atores
-Autores | Fábio de Andrade Barboza, João Augusto Rosa Feltran
-Interfaces | IAcao, IAtor, IAtorVisual, ICombate, IHeroi
+Classe | src.Ator
+Autores | João Augusto Rosa Feltran
+Interfaces | IAcao, IAtor, ICombate, IHeroi
 
 ### Interfaces
 
-![Diagrama Interfaces](assets/Apresentacao/Interfaces-Ator.png)
+![Diagrama Interfaces](assets/Apresentacao/Interfaces-Atores.png)
 
-Interface agregadora do componente em Java:
+### Interface IAcao
+
+Interação do Herói com o Mapa.
 
 ~~~java
 package src.Ator;
 
-public interface IAtor{
+public interface IAcao {
+    // Getters
+    public IAtor getInimigoNaPosicao(int x, int y);
+
+    // Movimento
+    public void removerInimigo(int x, int y);
+    public char verificarMovimento(int x, int y);
+    public void mover(int x, int y, int fase);
+}
+~~~
+
+Método | Objetivo
+-------| --------
+void removerInimigo(int x, int y) | Remove o Inimigo do Mapa na posição (x, y) e transforma o local em um espaço vazio
+IAtor getInimigoNaPosicao(int x, int y) | Retorna o tipo de Ator presente na posição (x, y)
+char verificarMovimento(int x, int y) | Verifica se o movimento até a posição (x, y) é válido
+void mover(int x, int y int fase) | Move o Ator para a posição (x, y) e atualiza as imagens ao seu redor de acordo com a fase em que o jogador está
+
+### Interface IAtor
+
+Atualiza e retorna propriedades comuns a objetos da classe Ator e suas herdeiras.
+
+~~~java
+package src.Ator;
+
+public interface IAtor {
     // Setters
     public void setX(int x);
     public void setY(int y);
@@ -224,20 +249,30 @@ public interface IAtor{
 }
 ~~~
 
-### Interface IAcao
-
-Interação do Herói com o Mapa.
-
 Método | Objetivo
 -------| --------
-void removerInimigo(int x, int y) | Remove o Inimigo do Mapa na posição (x, y)
-IAtor getInimigoNaPosicao(int x, int y) | Retorna o tipo de Ator presente na posição (x, y)
-char verificarMovimento(int x, int y) | Verifica se o movimento até a posição (x, y) é válido
-void mover(int x, int y) | Move o Ator para a posição (x, y)
+void setX(int x) | Atualiza a posição horizontal do Ator
+void setY(int y) | Atualiza a posição vertical do Ator
+void setTipo(char tipo) | Atualiza o tipo do Ator
+int getX() | Retorna a posição horizontal do Ator
+int getY() | Retorna a posição vertical do Ator
+char getTipo() | Retorna o tipo do Ator
 
 ### Interface ICombate
 
 Gerencia as interações de combate entre Atores.
+
+~~~java
+package src.Ator;
+
+public interface ICombate {
+    // Getters
+    public boolean getVivo();
+
+    public int causarDano();
+    public void receberDano(int dano);
+}
+~~~
 
 Método | Objetivo
 -------| --------
@@ -249,61 +284,34 @@ void receberDano(int dano) | Diminui a vida do Ator com base no dano recebido e 
 
 Agrega as interfaces implementadas pelo Herói e gerencia o inventário do mesmo.
 
+~~~java
+package src.Ator;
+
+public interface IHeroi extends IAtor, ICombate, IAcao {
+    // Setters
+    public void setItemInventario(int posicao, int valor, String nome);
+    public void setVisualNaPosicao(int x, int y, char tipo, int fase);
+
+    // Getters
+    public String getVisualNaPosicao(int x, int y);
+    public int getValorItemInventario(int posicao);
+
+    // Outras funcoes
+    public void definirItensIniciais(int fase);
+    public boolean pegouChave(int fase);
+    public void curar(int porcentagem);
+}
+~~~
+
 Método | Objetivo
 -------| --------
 void setItemInventario(int posicao, int valor, String nome) | Cria e adiciona um novo item no inventário, de acordo com os parâmetros recebidos
-   
-## Componente Ator Visual
-
-Apresenta o componente Ator na tela. 
-
-![Componente Ator Visual](assets/Apresentacao/Componente-Ator-Visual.png)
-
-**Ficha Técnica**
-Item | Detalhamento
------ | -----
-Classe | src.AtorVisual
-Autores | Fábio de Andrade Barboza, João Augusto Rosa Feltran
-Interfaces | IAtorVisual, IVisual
-
-## Componente Mapa
-
-Armazena a posição dos componentes Atores.
-
-![Componente Mapa](assets/Apresentacao/Componente-Mapa.png)
-
-**Ficha Técnica**
-Item | Detalhamento
------ | -----
-Classe | src.Mapa
-Autores | Fábio de Andrade Barboza
-Interfaces | IAcao, IMapa, IMapaPropriedades, IMapaVisual
-
-## Componente Mapa Visual
-
-Apresenta o componente Mapa na tela. 
-
-![Componente Mapa Visual](assets/Apresentacao/Componente-Mapa-Visual.png)
-
-**Ficha Técnica**
-Item | Detalhamento
------ | -----
-Classe | src.MapaVisual
-Autores | Fábio de Andrade Barboza, João Augusto Rosa Feltran
-Interfaces | IMapaVisual, IVisual
-
-## Componente Montador
-
-Cria os componentes Atores e Mapa.
-
-![Componente Montador](assets/Apresentacao/Componente-Montador.png)
-
-**Ficha Técnica**
-Item | Detalhamento
------ | -----
-Classe | src.Montador
-Autores | João Augusto Rosa Feltran
-Interfaces | IMontadorAtores, IMontadorMapa
+void setVisualNaPosicao(int x, int y, char tipo, int fase) | Cria e adiciona um novo AtorVisual na posição (x, y) do View (MapaVisual), de acordo com os parâmetros recebidos
+String getVisualNaPosicao(int x, int y) | Retorna o endereço da imagem na posição (x, y)
+int getValorItemInventario(int posicao) | Retorna o valor do modificador item de acordo com sua posição no vetor de itens do Herói
+void definirItensIniciais(int fase) | Define os stats iniciais do Herói no início da fase indicada
+boolean pegouChave(int fase)| Verifica se o Herói já pegou a chave de saída da fase
+void curar(int porcentagem) | Restaura uma porcentagem da vida do Herói
 
 ## Componente Controle
 
@@ -316,11 +324,216 @@ Item | Detalhamento
 ----- | -----
 Classe | src.Controle
 Autores | Fábio de Andrade Barboza
-Interfaces | IControle, IControleVisual, IHeroi
+Interfaces | IControle
+
+### Interfaces
+
+![Diagrama Interfaces](assets/Apresentacao/Interfaces-Controle.png)
+
+### Interface IControle
+
+Atualiza e retorna propriedades do Controle e controla o estado do jogo.
+
+~~~java
+package src.Controle;
+
+import javax.swing.JFrame;
+
+import src.Ator.IHeroi;
+
+public interface IControle {
+    // Setters
+    public void setHeroi(IHeroi heroi);
+    public void setFase(int fase);
+    public void connectPainel(JFrame painel);
+
+    // Getters
+    public String getVisualNaPosicao(int x, int y);
+
+    public void jogada(int x, int y);
+}
+~~~
+
+Método | Objetivo
+-------| --------
+void setHeroi(IHeroi heroi) | Atualiza o Herói controlado
+void setFase(int fase) | Atualiza a fase atual do jogo
+void connectPainel(JFrame painel) | Conecta o Painel ao Controle
+String getVisualNaPosicao(int x, int y) | Retorna o endereço da imagem do ator na posição (x, y)
+void jogada(int x, int y) | Responde ao evento do jogador de clicar em um botão do Painel
+
+## Componente Mapa
+
+Armazena a posição dos componentes Atores e seus visuais.
+
+![Componente Mapa](assets/Apresentacao/Componente-Mapa.png)
+
+**Ficha Técnica**
+Item | Detalhamento
+----- | -----
+Classe | src.Mapa
+Autores | Fábio de Andrade Barboza, João Augusto Rosa Feltran
+Interfaces | IMapa, IMapaPropriedades, IMapaVisual
+
+### Interfaces
+
+![Diagrama Interfaces](assets/Apresentacao/Interfaces-Mapa.png)
+
+### Interface IMapa
+
+Interface agregadora do componente em Java.
+
+~~~java
+package src.Mapa;
+
+public interface IMapa extends IMapaPropriedades, IMapaVisual {
+
+}
+~~~
+
+### Interface IMapaPropriedades
+
+Atualiza e retorna propriedades do Mapa.
+
+~~~java
+package src.Mapa;
+
+import src.Ator.IAtor;
+
+public interface IMapaPropriedades {
+    // Setters
+    public void setAtorNaPosicao(IAtor ator, int x, int y);
+
+    // Getters
+    public IAtor getAtorNaPosicao(int x, int y);
+    public MapaVisual getVisual();
+}
+~~~
+
+Método | Objetivo
+-------| --------
+void setAtorNaPosicao(IAtor ator, int x, int y) | Insere o Ator recebido na posição (x, y)
+IAtor getAtorNaPosicao(int x, int y) | Retorna o Ator presente na posição (x, y)
+MapaVisual getVisual() | Retorna um ponteiro para o MapaVisual
+
+### Interface IMapaVisual
+
+Medeia interações com os componentes visuais.
+
+~~~java
+package src.Mapa;
+
+public interface IMapaVisual {
+    // Getters
+    public String getVisualNaPosicao(int x, int y);
+
+    public void ajustarVisibilidade(int visao, int xHeroi, int yHeroi, int fase);
+}
+~~~
+
+Método | Objetivo
+-------| --------
+String getVisualNaPosicao(int x, int y) | Retorna o endereço da imagem do Ator na posição (x, y)
+void ajustarVisibilidade(int visao, int xHeroi, int yHeroi, int fase) | Revela áreas escondidas do Mapa com base na visão do Herói
+
+## Componente Montador
+
+Cria os componentes Atores e Mapa.
+
+![Componente Montador](assets/Apresentacao/Componente-Montador.png)
+
+**Ficha Técnica**
+Item | Detalhamento
+----- | -----
+Classe | src.Montador
+Autores | João Augusto Rosa Feltran
+Interfaces | IMontador, IMontaAtor, IMontadorPropriedades, IMontaMapa
+
+### Interfaces
+
+![Diagrama Interfaces](assets/Apresentacao/Interfaces-Montador.png)
+
+### Interface IMontador
+
+Interface agregadora do componente em Java.
+
+~~~java
+package src.Montador;
+
+public interface IMontador extends IMontaAtor, IMontaMapa, IMontadorPropriedades {
+
+}
+~~~
+
+### Interface IMontaAtor
+
+Cria componentes da classe Ator e suas herdeiras.
+
+~~~java
+package src.Montador;
+
+public interface IMontaAtor {
+    public int[] modificarHabilidades(int vida, int ataque, int defesa);
+    public void gerarInimigo(int x, int y);
+    public void gerarChefe(int x, int y);
+}
+~~~
+
+Método | Objetivo
+-------| --------
+int[] modificarHabilidades(int vida, int ataque, int defesa) | Modifica aleatoriamente os valores de ataque, defesa e vida do inimigo, retornando um vetor com os novos valores
+void gerarInimigo(int x, int y) | Cria um inimigo e o posiciona em (x, y)
+void gerarChefe(int x, int y) | Cria um chefe e o posiciona em (x, y)
+
+### Interface IMontadorPropriedades
+
+Atualiza e retorna propriedades do Montador.
+
+~~~java
+package src.Montador;
+
+import src.Ator.IHeroi;
+import src.Mapa.IMapa;
+
+public interface IMontadorPropriedades {
+    // Setters
+    public void setFase(int fase);
+
+    // Getters
+    public int getFase();
+
+    public IHeroi getHeroi();
+
+    public IMapa getMapa();
+}
+~~~
+
+Método | Objetivo
+-------| --------
+void setFase(int fase) | Atualiza a fase atual do jogo
+int getFase() | Retorna a fase atual do jogo
+IHeroi getHeroi() | Retorna o Herói criado
+IMapa getMapa() | Retorna o Mapa criado
+
+### Interface IMontaMapa
+
+~~~java
+package src.Montador;
+
+public interface IMontaMapa {
+    public void criarFase();
+    public void definirTerritorioChefe(int x, int y);
+}
+~~~
+
+Método | Objetivo
+-------| --------
+void criarFase() | Cria a fase, posicionando os atores em seus devidos locais e inicializando-os
+void definirTerritorioChefe(int x, int y) | Modifica as células ao redor do chefe (em um raio de 1 célula) para serem do tipo 't'
 
 ## Componente Painel
 
-Interacao com o jogador e apresentação do jogo na tela. 
+Interação com o jogador e apresentação do jogo na tela. 
 
 ![Componente Painel](assets/Apresentacao/Componente-Painel.png)
 
@@ -329,7 +542,44 @@ Item | Detalhamento
 ----- | -----
 Classe | src.Painel
 Autores | Fábio de Andrade Barboza, João Augusto Rosa Feltran
-Interfaces | IControleVisual, IVisual
+Interfaces | IPainelPrincipal
+
+### Interfaces
+
+![Diagrama Interfaces](assets/Apresentacao/Interfaces-Painel.png)
+
+### Interface IPainelPrincipal
+
+Herdeira de ActionListener.
+
+~~~java
+package src.Painel;
+
+import java.awt.event.*;
+
+public interface IPainelPrincipal extends ActionListener {
+}
+~~~
+
+Método | Objetivo
+-------| --------
+void actionPerformed(ActionEvent e) | Lida com o evento gerado pelo jogador
+
+## Componente Visual
+
+Apresenta os Atores e o Mapa na tela para o jogador.
+
+![Componente Visual](assets/Apresentacao/Componente-Visual.png)
+
+**Ficha Técnica**
+Item | Detalhamento
+----- | -----
+Classe | src.Ator
+Autores | João Augusto Rosa Feltran
+
+### Classes 
+
+![Diagrama Classes](assets/Apresentacao/Classes-Visual.png)
 
 # Plano de Exceções
 
