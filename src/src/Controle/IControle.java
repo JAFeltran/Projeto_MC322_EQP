@@ -3,7 +3,6 @@ package src.Controle;
 import javax.swing.JFrame;
 
 import src.Ator.IHeroi;
-// import src.Painel.IPainelPrincipal;
 
 public interface IControle {
     // Setters

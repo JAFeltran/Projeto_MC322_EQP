@@ -29,10 +29,6 @@ public class PainelPrincipal extends JFrame implements IPainelPrincipal {
         controle.connectPainel(this);
         controle.setHeroi(montador.getHeroi());
 
-        // guardar o herói??
-        
-        // this.controle = controle;
-
         if (fase == 1) {
             criarTela1();
         } else {
