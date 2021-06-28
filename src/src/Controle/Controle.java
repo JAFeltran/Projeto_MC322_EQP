@@ -105,10 +105,9 @@ public class Controle implements IControle {
             heroi.setItemInventario(item.getPosicao(), item.getValor(), item.getNome());
             JOptionPane.showMessageDialog(new JFrame(), "O Inimigo derrubou um item:\n" + item.getNome(), "Novo item!", JOptionPane.INFORMATION_MESSAGE, new ImageIcon("assets/Itens/Fase" + fase + "/" + item.getNome() + ".png"));
         }
-        else if (((IAtor) inimigo).getTipo() == 'c' && chave != null) {
+        else if (((IAtor) inimigo).getTipo() == 'c') {
             heroi.setItemInventario(chave.getPosicao(), chave.getValor(), chave.getNome());
             JOptionPane.showMessageDialog(new JFrame(), "O poderoso chefe derrubou uma chave!\nEncontre a fechadura para vencer esta fase.", "Novo item!", JOptionPane.INFORMATION_MESSAGE, new ImageIcon("assets/Itens/Fase" + fase + "/Chave.png"));
-            chave = null;
         }
     }
 
@@ -134,6 +133,8 @@ public class Controle implements IControle {
 
                     if (heroi.getVivo()) {
                         pegarItem();
+
+                        heroi.removerInimigo(x, y);
                         mover(x, y);
 
                         if (random.nextInt(4) == 3) {
@@ -165,7 +166,9 @@ public class Controle implements IControle {
                     JOptionPane.showMessageDialog(new JFrame(), "O Herói não pode se mover para lá!", "Aviso", JOptionPane.WARNING_MESSAGE, new ImageIcon("assets/Controle/atencao.png"));
                     break;
                 case 't':
-                    JOptionPane.showMessageDialog(new JFrame(), "O Herói sente que um grande mal se aproxima...", "Aviso", JOptionPane.WARNING_MESSAGE, new ImageIcon("assets/Controle/chefe.png"));
+                    if (!heroi.pegouChave()) {
+                        JOptionPane.showMessageDialog(new JFrame(), "O Herói sente que um grande mal se aproxima...", "Aviso", JOptionPane.WARNING_MESSAGE, new ImageIcon("assets/Controle/chefe.png"));
+                    }
                     mover(x, y);
                     break;
                 case '_':
@@ -178,5 +181,3 @@ public class Controle implements IControle {
         }
     }
 }
-
-// TODO Não deixar o herói se mover para qualquer lugar
