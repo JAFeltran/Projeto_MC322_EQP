@@ -21,14 +21,12 @@ public class Controle implements IControle {
     private ArrayList<IItem> itens;
     private IItem chave;
     private Random random;
-    private boolean acabou;
     private JFrame painel;
 
     // Construtor
     public Controle() {
         random = new Random();
         itens = new ArrayList<IItem>();
-        acabou = false;
         heroi = null;
         setFase(1);
     }
@@ -158,7 +156,6 @@ public class Controle implements IControle {
                             System.exit(0);
                         }
                         heroi.setItemInventario(3, 0, "Chave");
-                        acabou = true;
                     }
                     else {
                         JOptionPane.showMessageDialog(new JFrame(), "Encontre a chave para prosseguir!", "Aviso", JOptionPane.WARNING_MESSAGE, new ImageIcon("assets/Controle/atencao.png"));
