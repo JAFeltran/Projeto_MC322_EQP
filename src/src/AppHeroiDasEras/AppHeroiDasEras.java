@@ -1,8 +1,5 @@
 package src.AppHeroiDasEras;
 
-// import src.Ator.*;
-// import src.Controle.*;
-// import src.Montador.*;
 import src.Painel.*;
 
 public class AppHeroiDasEras {

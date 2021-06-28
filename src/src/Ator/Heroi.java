@@ -30,6 +30,7 @@ public class Heroi extends Ator implements IHeroi {
         vidaMax = 300;
         if (fase > 1) {
             vida += fase * 100;
+            vidaMax += fase * 100;
         }
 
         this.mapa = mapa;

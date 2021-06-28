@@ -5,7 +5,6 @@ import javax.swing.*;
 import java.awt.Cursor;
 import java.awt.event.*;
 
-import src.Ator.IHeroi;
 import src.Controle.*;
 import src.Montador.IMontador;
 import src.Montador.Montador;
@@ -83,20 +82,11 @@ public class PainelPrincipal extends JFrame implements IPainelPrincipal {
         if (fase != 1) {
             fundo = new JLabel(new ImageIcon("assets/PainelPrincipal/mapa.png"));
             add(fundo);
-            setSize(700, 700);
-            setResizable(false);
-            setLayout(null);
-            setLocationRelativeTo(null);
-            setVisible(true);
-            setDefaultCloseOperation(EXIT_ON_CLOSE);
         } else {
             fundo.setIcon(new ImageIcon("assets/PainelPrincipal/mapa.png"));
             fundo.remove(jogar2);        
         }
         botoes = new JButton[7][7];
-
-        String mensagem = "Clique em um quadrado visível para mover o Herói para lá.\nAo mover o Herói para o local onde está um Inimigo, uma batalha épica se iniciará!";
-        JOptionPane.showMessageDialog(new JFrame(), mensagem, "Instruções", JOptionPane.INFORMATION_MESSAGE, new ImageIcon("assets/PainelBatalha/info.png"));
         
         for (int i = 0; i < 7; i ++) {
             for (int j = 0; j < 7; j ++) {
@@ -108,6 +98,9 @@ public class PainelPrincipal extends JFrame implements IPainelPrincipal {
                 fundo.add(botoes[i][j]);
             }
         }
+
+        String mensagem = "Clique em um quadrado visível para mover o Herói para lá.\nAo mover o Herói para o local onde está um Inimigo, uma batalha épica se iniciará!";
+        JOptionPane.showMessageDialog(new JFrame(), mensagem, "Instruções", JOptionPane.INFORMATION_MESSAGE, new ImageIcon("assets/PainelBatalha/info.png"));
         
         atualizarMapa();
     }
