@@ -187,7 +187,7 @@ Melhorias de design possíveis incluem a utilização de Factories para criaçã
 
 ## Diagrama Geral do Projeto
 
-![Diagrama Geral do Projeto](assets/Apresentacao/Diagrama-Geral.png)
+![Diagrama Geral do Projeto](assets/Apresentacao/Diagrama-Geral-Final.png)
 
 ## Componente Ator
 
