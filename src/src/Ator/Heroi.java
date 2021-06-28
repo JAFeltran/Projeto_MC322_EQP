@@ -61,12 +61,14 @@ public class Heroi extends Ator implements IHeroi {
         return inventario[posicao].getValor();
     }
 
-    public void curar() {
-        if (vida + (vidaMax / 2) > vidaMax) {
+    public void curar(int porcento) {
+        int cura = (porcento / 100) * vida;
+
+        if (vida + cura > vidaMax) {
             vida = vidaMax;
         }
         else {
-            vida += (vidaMax / 2);
+            vida += cura;
         }
     }
 

@@ -14,6 +14,6 @@ public interface IHeroi extends IAtor, ICombate, IAcao {
     // Outras funcoes
     // Verifica se o heroi carrega uma chave
     public boolean pegouChave(int fase);
-    // Recupera uma porcao da vida maxima do heroi
-    public void curar();
+    // Recupera uma porcentagem da vida maxima do heroi
+    public void curar(int porcentagem);
 }
