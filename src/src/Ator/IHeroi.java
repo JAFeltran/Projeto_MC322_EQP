@@ -6,8 +6,6 @@ public interface IHeroi extends IAtor, ICombate, IAcao {
     public void setVisualNaPosicao(int x, int y, char tipo, int fase);
 
     // Getters
-    public int getVida();
-    public int getVidaMax();
     public String getVisualNaPosicao(int x, int y);
     public int getValorItemInventario(int posicao);
 

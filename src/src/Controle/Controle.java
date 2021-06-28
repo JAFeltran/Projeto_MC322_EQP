@@ -83,18 +83,6 @@ public class Controle implements IControle {
         this.painel = painel;
     }
 
-    public boolean getVivo() {
-        return heroi.getVivo();
-    }
-
-    public boolean getAcabou() {
-        return acabou;
-    }
-
-    public IHeroi getHeroi() {
-        return heroi;
-    }
-
     public String getVisualNaPosicao(int x, int y) {
         return heroi.getVisualNaPosicao(x, y);
     }

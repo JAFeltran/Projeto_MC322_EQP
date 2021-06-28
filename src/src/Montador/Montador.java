@@ -115,12 +115,12 @@ public class Montador implements IMontador {
         habilidades[2] = defesa;
 
         if (random.nextInt(2) == 0) {
-            habilidades[1] += habilidades[1] * 0.2;
-            habilidades[2] -= habilidades[2] * 0.2;
+            habilidades[1] += habilidades[1] * 0.1;
+            habilidades[2] -= habilidades[2] * 0.1;
         }
         else {
-            habilidades[1] -= habilidades[1] * 0.2;
-            habilidades[2] += habilidades[2] * 0.2;
+            habilidades[1] -= habilidades[1] * 0.1;
+            habilidades[2] += habilidades[2] * 0.1;
         }
 
         return habilidades;

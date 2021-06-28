@@ -12,9 +12,6 @@ public interface IControle {
     public void connectPainel(JFrame painel);
 
     // Getters
-    public boolean getVivo();
-    public boolean getAcabou();
-    public IHeroi getHeroi();
     public String getVisualNaPosicao(int x, int y);
 
     // Responde ao evento do jogador de clicar em um botão do mapa

@@ -16,10 +16,6 @@ public class Item implements IItem {
         this.valor = valor;
     }
 
-    public void setPosicao(int posicao) {
-        this.posicao = posicao;
-    }
-
     public void setNome(String nome) {
         this.nome = nome;
     }

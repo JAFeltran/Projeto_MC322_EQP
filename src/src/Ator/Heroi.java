@@ -49,14 +49,6 @@ public class Heroi extends Ator implements IHeroi {
         mapa.getVisual().setAtorVisualNaPosicao(x, y, tipo, fase);
     }
 
-    public int getVida() {
-        return vida;
-    }
-
-    public int getVidaMax() {
-        return vidaMax;
-    }
-
     public String getVisualNaPosicao(int x, int y) {
         return mapa.getVisualNaPosicao(x, y);
     }

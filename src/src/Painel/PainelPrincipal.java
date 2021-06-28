@@ -47,11 +47,6 @@ public class PainelPrincipal extends JFrame implements IPainelPrincipal {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
-    // Setter
-    public void setControle(IControle controle) {
-        this.controle = controle;
-    }
-
     // Cria a tela inicial
     private void criarTela1() {
         fundo = new JLabel(new ImageIcon("assets/PainelPrincipal/tela1.png"));
