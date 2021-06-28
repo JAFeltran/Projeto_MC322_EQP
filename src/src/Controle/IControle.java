@@ -1,11 +1,13 @@
 package src.Controle;
 
 import src.Ator.IHeroi;
+import src.Painel.IPainelPrincipal;
 
 public interface IControle {
     // Setters
     public void setHeroi(IHeroi heroi);
     public void setFase(int fase);
+    public void connectPainel(IPainelPrincipal painel);
 
     // Getters
     public boolean getVivo();

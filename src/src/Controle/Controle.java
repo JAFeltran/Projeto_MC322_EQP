@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 import src.Ator.*;
 import src.Item.IItem;
 import src.Item.Item;
+import src.Painel.IPainelPrincipal;
 
 public class Controle implements IControle {
     // Atributos
@@ -21,6 +22,7 @@ public class Controle implements IControle {
     private IItem chave;
     private Random random;
     private boolean acabou;
+    private IPainelPrincipal painel;
 
     // Construtor
     public Controle() {
@@ -75,6 +77,10 @@ public class Controle implements IControle {
                 chave = new Item(6, 3, "Chave");
                 break;
         }
+    }
+
+    public void connectPainel(IPainelPrincipal painel) {
+        this.painel = painel;
     }
 
     public boolean getVivo() {
@@ -154,6 +160,9 @@ public class Controle implements IControle {
                         if (fase < 6) {
                             if (JOptionPane.showConfirmDialog(new JFrame(), "O Herói conseguiu derrotar o mal nessa era.\nVocê deseja continuar nessa aventura e avançar para a próxima fase?", "Sucesso!", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, new ImageIcon("assets/Controle/chefe.png")) != 0) {
                                 System.exit(0);
+                            } else {
+                                setFase(fase + 1);
+                                acabou = true;
                             }
                         }
                         else {

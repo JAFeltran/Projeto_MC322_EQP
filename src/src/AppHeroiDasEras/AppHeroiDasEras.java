@@ -9,11 +9,12 @@ public class AppHeroiDasEras {
 
     public static void main(String[] args) {
         IControle controle = new Controle();
+        IPainelPrincipal painel;
         int fase;
         IMontador montador;
         IHeroi heroi = null;
 
-        new PainelPrincipal(controle);
+        painel = new PainelPrincipal(controle);
 
         for (fase = 1; fase < 7; fase++) {
             montador = new Montador(fase, ("data/CSVs/Fase" + fase + ".csv"));
