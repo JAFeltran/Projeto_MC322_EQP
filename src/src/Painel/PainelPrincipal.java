@@ -5,7 +5,10 @@ import javax.swing.*;
 import java.awt.Cursor;
 import java.awt.event.*;
 
+import src.Ator.IHeroi;
 import src.Controle.*;
+import src.Montador.IMontador;
+import src.Montador.Montador;
 
 public class PainelPrincipal extends JFrame implements IPainelPrincipal {
     // Atributos
@@ -13,13 +16,31 @@ public class PainelPrincipal extends JFrame implements IPainelPrincipal {
     private JButton jogar1, jogar2;
     private JButton botoes[][];
     private IControle controle;
+    private IMontador montador;
+    private IHeroi heroi = null;
+    private int fase;
 
     // Construtor
-    public PainelPrincipal(IControle controle) {
+    public PainelPrincipal(int fase) {
         super("O Herói das Eras");
-        this.controle = controle;
+        this.fase = fase;
+        montador = new Montador(fase, ("data/CSVs/Fase" + fase + ".csv"));
+        montador.criarFase();
+        controle = new Controle();
+        controle.setFase(fase);
+        controle.connectPainel(this);
+        controle.setHeroi(montador.getHeroi());
 
-        criarTela1();
+        // guardar o herói??
+        
+        // this.controle = controle;
+
+        if (fase == 1) {
+            criarTela1();
+        } else {
+            criarMapa(fase);
+        }
+
         pack();
         setResizable(false);
         setLayout(null);
@@ -59,9 +80,20 @@ public class PainelPrincipal extends JFrame implements IPainelPrincipal {
     }
 
     // Cria a tela com o mapa e os botões de movimento
-    private void criarMapa() {
-        fundo.setIcon(new ImageIcon("assets/PainelPrincipal/mapa.png"));
-        fundo.remove(jogar2);        
+    private void criarMapa(int fase) {
+        if (fase != 1) {
+            fundo = new JLabel(new ImageIcon("assets/PainelPrincipal/mapa.png"));
+            add(fundo);
+            pack();
+            setResizable(false);
+            setLayout(null);
+            setLocationRelativeTo(null);
+            setVisible(true);
+            setDefaultCloseOperation(EXIT_ON_CLOSE);
+        } else {
+            fundo.setIcon(new ImageIcon("assets/PainelPrincipal/mapa.png"));
+            fundo.remove(jogar2);        
+        }
         botoes = new JButton[7][7];
 
         String mensagem = "Clique em um quadrado visível para mover o Herói para lá.\nAo mover o Herói para o local onde está um Inimigo, uma batalha épica se iniciará!";
@@ -96,7 +128,7 @@ public class PainelPrincipal extends JFrame implements IPainelPrincipal {
         if (e.getSource() == jogar1) {
             criarTela2();
         } else if (e.getSource() == jogar2) {
-            criarMapa();
+            criarMapa(fase);
         } else {
             for (int i = 0; i < 7; i ++) {
                 for (int j = 0; j < 7; j ++) {
