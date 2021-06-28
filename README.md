@@ -42,9 +42,11 @@ Conseguirá o herói cumprir sua missão? Isso depende somente de você...
 
 [Vídeo da prévia](https://drive.google.com/file/d/1uszDQPCGeER__hJ6rSXI5SbTS8QNMBl6/view?usp=sharing)
 
-## Vídeo do Jogo
+## Vídeos do Jogo
 
 [Vídeo do jogo](https://drive.google.com/file/d/1FMIGBxfel2OFO-7UKeGbSDYQVWsR2bZh/view?usp=sharing)
+
+[Vídeo do jogo completo](https://drive.google.com/file/d/197np9WtcwXe0baI0MZ2JjPMWj9X8xRG_/view?usp=sharing)
 
 # Slides
 
