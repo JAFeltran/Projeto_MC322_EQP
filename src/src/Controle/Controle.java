@@ -2,6 +2,7 @@ package src.Controle;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.lang.Math;
 
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -115,60 +116,65 @@ public class Controle implements IControle {
     public void jogada(int x, int y) {
         char movimento = heroi.verificarMovimento(x, y);
 
-        switch (movimento) {
-            case 'c':
-            case 'i':
-                inimigo = (ICombate) heroi.getInimigoNaPosicao(x, y);
-                IPainelBatalha batalha = new PainelBatalha(heroi, inimigo, fase);
+        if (Math.abs(x - heroi.getX()) <= 1 && Math.abs(y - heroi.getY()) <= 1) {
+            switch (movimento) {
+                case 'c':
+                case 'i':
+                    inimigo = (ICombate) heroi.getInimigoNaPosicao(x, y);
+                    IPainelBatalha batalha = new PainelBatalha(heroi, inimigo, fase);
 
-                while (!batalha.getAcabou()) {
-                    try {
-                        Thread.currentThread().wait();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                        System.exit(1);
-                    }
-                }
-
-                if (heroi.getVivo()) {
-                    pegarItem();
-                    mover(x, y);
-
-                    if (random.nextInt(4) == 3) {
-                        heroi.curar();
-                    }
-                }
-
-                break;
-            case 's':
-                if (heroi.pegouChave()) {
-                    if (fase < 6) {
-                        if (JOptionPane.showConfirmDialog(new JFrame(), "O Herói conseguiu derrotar o mal nessa era.\nVocê deseja continuar nessa aventura e avançar para a próxima fase?", "Sucesso!", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, new ImageIcon("assets/Controle/chefe.png")) != 0) {
-                            System.exit(0);
+                    while (!batalha.getAcabou()) {
+                        try {
+                            Thread.currentThread().wait();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                            System.exit(1);
                         }
                     }
-                    else {
-                        JOptionPane.showMessageDialog(new JFrame(), "O Herói cumpriu sua missão e protegeu a humanidade! Parabéns!", "Parabéns!", JOptionPane.INFORMATION_MESSAGE, new ImageIcon("assets/Controle/chefe.png"));
-                        System.exit(0);
+
+                    if (heroi.getVivo()) {
+                        pegarItem();
+                        mover(x, y);
+
+                        if (random.nextInt(4) == 3) {
+                            heroi.curar();
+                        }
                     }
 
-                    acabou = true;
-                }
-                else {
-                    heroi.setVisualNaPosicao(x, y, 's', fase);
-                }
+                    break;
+                case 's':
+                    if (heroi.pegouChave()) {
+                        if (fase < 6) {
+                            if (JOptionPane.showConfirmDialog(new JFrame(), "O Herói conseguiu derrotar o mal nessa era.\nVocê deseja continuar nessa aventura e avançar para a próxima fase?", "Sucesso!", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, new ImageIcon("assets/Controle/chefe.png")) != 0) {
+                                System.exit(0);
+                            }
+                        }
+                        else {
+                            JOptionPane.showMessageDialog(new JFrame(), "O Herói cumpriu sua missão e protegeu a humanidade! Parabéns!", "Parabéns!", JOptionPane.INFORMATION_MESSAGE, new ImageIcon("assets/Controle/chefe.png"));
+                            System.exit(0);
+                        }
 
-                break;
-            case 'o':
-                JOptionPane.showMessageDialog(new JFrame(), "O Herói não pode se mover para lá!", "Aviso", JOptionPane.WARNING_MESSAGE, new ImageIcon("assets/Controle/atencao.png"));
-                break;
-            case 't':
-                JOptionPane.showMessageDialog(new JFrame(), "O Herói sente que um grande mal se aproxima...", "Aviso", JOptionPane.WARNING_MESSAGE, new ImageIcon("assets/Controle/chefe.png"));
-                mover(x, y);
-                break;
-            case '_':
-                mover(x, y);
-                break;
+                        acabou = true;
+                    }
+                    else {
+                        heroi.setVisualNaPosicao(x, y, 's', fase);
+                    }
+
+                    break;
+                case 'o':
+                    JOptionPane.showMessageDialog(new JFrame(), "O Herói não pode se mover para lá!", "Aviso", JOptionPane.WARNING_MESSAGE, new ImageIcon("assets/Controle/atencao.png"));
+                    break;
+                case 't':
+                    JOptionPane.showMessageDialog(new JFrame(), "O Herói sente que um grande mal se aproxima...", "Aviso", JOptionPane.WARNING_MESSAGE, new ImageIcon("assets/Controle/chefe.png"));
+                    mover(x, y);
+                    break;
+                case '_':
+                    mover(x, y);
+                    break;
+            }
+        }
+        else {
+            JOptionPane.showMessageDialog(new JFrame(), "O Herói não pode se mover para lá!", "Aviso", JOptionPane.WARNING_MESSAGE, new ImageIcon("assets/Controle/atencao.png"));
         }
     }
 }
