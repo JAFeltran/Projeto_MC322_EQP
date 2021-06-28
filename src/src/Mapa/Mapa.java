@@ -31,6 +31,10 @@ public class Mapa implements IMapa {
     }
 
     // IMapaVisual
+    public String getVisualNaPosicao(int x, int y) {
+        return visual.getAtorVisualNaPosicao(x, y).getIcone();
+    }
+
     public void ajustarVisibilidade(int visao, int xHeroi, int yHeroi, int fase) {
         visual.setAtorVisualNaPosicao(xHeroi, yHeroi, 'h', fase);
 
@@ -76,9 +80,5 @@ public class Mapa implements IMapa {
                 }
             }
         }
-    }
-
-    public String getVisualNaPosicao(int x, int y) {
-        return visual.getAtorVisualNaPosicao(x, y).getIcone();
     }
 }

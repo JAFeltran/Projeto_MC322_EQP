@@ -3,6 +3,7 @@ package src.Ator;
 import java.util.Random;
 
 public class Inimigo extends Ator implements ICombate {
+    // Atributos
     protected int vida, ataque, defesa;
 
     // Construtor

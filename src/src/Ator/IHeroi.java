@@ -12,6 +12,8 @@ public interface IHeroi extends IAtor, ICombate, IAcao {
     public int getValorItemInventario(int posicao);
 
     // Outras funcoes
+    // Verifica se o heroi carrega uma chave
     public boolean pegouChave();
+    // Recupera uma porcao da vida maxima do heroi
     public void curar();
 }

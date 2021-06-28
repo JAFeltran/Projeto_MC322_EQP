@@ -111,7 +111,6 @@ public class Controle implements IControle {
         }
     }
 
-    // Responde ao evento do jogador de clicar em um botão do mapa
     public void jogada(int x, int y) {
         char movimento = heroi.verificarMovimento(x, y);
 
@@ -158,6 +157,7 @@ public class Controle implements IControle {
                         acabou = true;
                     }
                     else {
+                        JOptionPane.showMessageDialog(new JFrame(), "Encontre a chave para prosseguir!", "Aviso", JOptionPane.WARNING_MESSAGE, new ImageIcon("assets/Controle/atencao.png"));
                         heroi.setVisualNaPosicao(x, y, 's', fase);
                     }
 

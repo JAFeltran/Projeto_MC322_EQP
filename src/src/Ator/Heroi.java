@@ -45,10 +45,6 @@ public class Heroi extends Ator implements IHeroi {
         mapa.getVisual().setAtorVisualNaPosicao(x, y, tipo, fase);
     }
 
-    public void removerInimigo(int x, int y) {
-        mapa.setAtorNaPosicao(new Ator(x, y, '_'), x, y);
-    }
-
     public int getVida() {
         return vida;
     }
@@ -91,6 +87,10 @@ public class Heroi extends Ator implements IHeroi {
 
     public IAtor getInimigoNaPosicao(int x, int y) {
         return mapa.getAtorNaPosicao(x, y);
+    }
+
+    public void removerInimigo(int x, int y) {
+        mapa.setAtorNaPosicao(new Ator(x, y, '_'), x, y);
     }
 
     public char verificarMovimento(int x, int y) {

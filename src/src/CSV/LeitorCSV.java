@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 public class LeitorCSV {
+    // le um arquivo csv de tamanho 7x7 e retorna uma matriz com o conteudo do arquivo
     public static String[][] lerCSV(String caminhoCSV) {
         if (caminhoCSV != null) {
             try {
